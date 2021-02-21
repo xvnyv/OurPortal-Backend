@@ -3,10 +3,12 @@ import requests
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+import json
+import pathlib
 
 cred = credentials.ApplicationDefault()
 firebase_admin.initialize_app(cred, {
-    'projectId': 'auth-a74c7'
+    'projectId': 'ourportal-e0a9c'
 })
 
 db = firestore.client()
@@ -117,7 +119,16 @@ def istd():
 
 def asd():
     pass
-            
+         
+def export_to_json():
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'w')
+    modules = {}
+    docs = db.collection(u'modules').stream()
+
+    for doc in docs:
+        modules[doc.id] = doc.to_dict()
+    
+    json.dump(modules, f)
     
 def main():
     esd()
