@@ -1,15 +1,23 @@
+from algoliasearch.search_client import SearchClient
 from bs4 import BeautifulSoup
-import requests
+from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 import json
+import os
 import pathlib
+import requests
+
+load_dotenv()
 
 cred = credentials.ApplicationDefault()
 firebase_admin.initialize_app(cred, {
     'projectId': 'ourportal-e0a9c'
 })
+
+algolia_client = SearchClient.create(os.getenv('ALGOLIA_APPLICATION_ID'), os.getenv('ALGOLIA_ADMIN_API_KEY'))
+algolia_index = algolia_client.init_index('dev_ourportal')
 
 db = firestore.client()
 
@@ -122,16 +130,32 @@ def asd():
          
 def export_to_json():
     f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'w')
-    modules = {}
+    modules = []
     docs = db.collection(u'modules').stream()
 
     for doc in docs:
-        modules[doc.id] = doc.to_dict()
+        modules.append(doc.to_dict())
     
     json.dump(modules, f)
     
+def edit_instructor_name():
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'r')
+    modules = json.load(f)
+    
+    for module in modules:
+        if module['instructor'] == '':
+            module['instructor_first_name'] = ''
+            module['instructor_last_name'] = ''
+        else:
+            (module['instructor_first_name'], module['instructor_last_name']) = module['instructor'].split(maxsplit=1)
+        del module['instructor']
+    f.close()
+    
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'w')
+    json.dump(modules, f)
+    
 def main():
-    esd()
+    edit_instructor_name()
     
 if __name__ == '__main__':
     main()
