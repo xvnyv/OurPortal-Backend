@@ -1,0 +1,272 @@
+[
+  {
+    "subject_code": "50.001",
+    "title": "Information Systems & Programming",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is an introduction to the design and programming of information systems. Topics include object oriented programming, data structures, mobile system and programming, design pattern and use of software libraries. Sample applications include Internet of Things, Android app and data analytics.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.002",
+    "title": "Computation Structures",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces architecture of digital systems, emphasising structural principles common to a wide range of technologies. Topics include Multilevel implementation strategies; definition of new primitives (e.g., gates, instructions, procedures, and processes) and their mechanisation using lower-level elements. Analysis of potential concurrency; precedence constraints and performance measures; pipelined and multidimensional systems; instruction set design issues; architectural support for contemporary software structures.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.003",
+    "title": "Elements of Software Construction",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is an introduction to the fundamental principles and techniques of software construction that have greatest impact on practice. Topics include capturing the essence of a problem by recognizing and inventing suitable abstractions; key paradigms, including basic concepts of software design and their expression using notations from Unified Modeling Language (UML); software testing, automated software test generation, automated software security testing via blackbox, greybox and whitebox fuzzing approaches, detection and removal of software code smells, software coding standards to avoid security loopholes, concurrent programming, including programming with threads and processes, understanding concurrency problems like deadlock and data race. This course includes exercises in software design, implementation, testing and reasoning.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.004",
+    "title": "Algorithms",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is an introductory course to mathematical modeling of computational problems, as well as common algorithms, algorithmic paradigms, and data structures used to solve these problems. It emphasizes the relationship between algorithms and programming, and introduces basic performance measures and analysis techniques for these problems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.005",
+    "title": "Computer System Engineering",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Topics on the engineering of computing and networking systems: design challenges; techniques for controlling complexity; operating systems and networking systems: performance; strong modularity; client-server; naming; security and privacy, atomicity and coordination of concurrent activities; user and end-to-end applications. Case studies of working systems and readings from the current literature provide comparisons and contrasts. Students will complete two design/implementation projects.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.034",
+    "title": "Introduction to Probability and Statistics",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is an introduction to statistics and probability covering essential topics. Sample space, discrete and continuous random variables, probability distributions, joint and conditional distributions, expectation, transformation of random variables, limit theorems, estimation theory, hypothesis testing, confidence interval, statistical tests, and regression.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.006",
+    "title": "User Interface Design and Implementation",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course will introduce the field of Human-Computer Interaction (HCI), Interaction Design and Usability in the context of today\u2019s diverse interactive products. The course will cover usability principles, design guidelines and heuristics, user-centred design, usability engineering, user experience and evaluation techniques, and will include a series of mini design exercises and design-implementation projects. Students who successfully complete the course will be well-equipped with the concepts and language to argue and discuss how well a system\u2019s front-end (e.g. a website, a mobile app, a museum kiosk, etc.) is designed and be able to design usable, easy-to-use, intuitive, attractive user-interfaces informed by the concepts and knowledge learned during the course.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.007",
+    "title": "Machine Learning",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Machine learning is the study of algorithms that improve their performance at some task with experience. In this course, students will learn how machine learning has led to many innovative real-world applications. The students will also gain an in-depth understanding of a broad range of machine learning algorithms from basic to state-of-the-art, such as: na\u00efve Bayes, logistic regression, neural networks, clustering, probabilistic graphical models, reinforcement learning and SVMs.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.012",
+    "title": "Networks",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will introduce the principles and practice of computer networking, with emphasis on the Internet. Students will learn concepts, principles, protocols, and applications of computer networks, including packet switching, layered architectures, TCP/IP, physical layer, error control, window flow control, local area networks (Ethernet, Token Ring; FDDI), network layer, congestion control, quality of service, multicast, network programming interfaces, networked applications.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.017",
+    "title": "Graphics and Visualisation",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Introduction to computer graphics algorithms, software and hardware. Topics include ray tracing, the graphics pipeline, transformations, texture mapping, shadows, sampling, global illumination, splines, animation, color, fundamentals of virtual and augmented reality (VR and AR).\nIn this course, we will concentrate on 3D, not 2D illustration or image processing. You will learn:\n\u2022 Fundamentals of computer graphics algorithms\n\u2022 Basics of real-time rendering and graphics hardware\n\u2022 Basic OpenGL\n\u2022 C/C++ programming experience\n\u2022 How to write efficient programs\n\u2022 Algorithms that can help in Machine Learning (e.g. KDTree)\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.020",
+    "title": "Network Security",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course covers theory and practice of network security. Starting with general introduction of network security, this course focuses on Internet security. The first part addresses common security issues and countermeasures at each of the five layers from the TCP/IP protocol stack. Subsequently, Firewall and Intrusion Detection/ Prevention System are covered as two of the most common tools/technologies to protect a network. Finally, the course ends with special topics such as wireless network security, IoT security, etc.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.021",
+    "title": "Artificial Intelligence",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Artificial intelligence (AI) is a rich field spanning formal systems for representing and processing symbolic information, computational models of human cognition, and a range of techniques for learning, planning and reasoning under uncertainty. In this course, students will gain an appreciation of what \u201cartificial intelligence\u201d means, and how it can be usefully applied to real-world problems. Students will learn the intricacies of state-space search and constraint programming. Through an in-depth treatment of knowledge representation via propositional and first-order logic, students will understand how expert knowledge can be fed into and be processed by modern computers. In addition, students will acquire skills in using planning algorithms to find solutions to optimization problems, and understand how to use probabilistic reasoning to draw inferences in uncertain environments.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.033",
+    "title": "Foundations of Game Design and Development",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is an introductory course about the basic of game creation. This course provides an overview of different aspects of game development. Student will get in touch with\u00a0C#\u00a0Programming (industry standard), starting with console application, then GUI games on various platform with graphics, dialog boxes, and user control. There are also basic overview of topics including game architecture, interface design, graphics for game, audio for game, prototyping and play testing. Students will be able to implement their creative gaming idea by using the latest gaming tools which are easy and readily usable.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.035",
+    "title": "Computer Vision",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is an advanced undergraduate level course on the concepts, algorithms and system design in computer vision. The particular focus in this course is on the underlying computational/mathematical principles, and data-driven and neural networks (aka \u201cdeep learning\u201d) approaches. The course introduces different computer vision tasks such as image/video classification, localization, detection, among others, and discusses different computational algorithms for these tasks, including recently proposed deep learning methods: convolutional neural networks (CNN), recurrent neural networks (RNN), long short-term memory (LSTM), Generative Adversarial Networks (GAN), etc. Students will learn to design, implement, train and debug their own systems and neural networks, and gain understanding of, and the skills to use, cutting-edge technologies in computer vision. A semester-long, 1-D design project requires students to design, implement, and train multi-million parameter neural networks to address real-world computer vision problems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.036",
+    "title": "Foundations of Distributed Autonomous Systems",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course \u00a0introduces fundamental principles that underlie \u00a0the design and validation of complex autonomous systems. The usage of such systems is gaining popularity at a rapid pace, including but not limited to their usage in robotics, smart home, and autonomous vehicles. The course \u00a0delves into the theoretical and practical aspects of designing mixed hardware-software systems \u2013 criteria shared by most autonomous systems envisioned in a smart nation. Topics include the essence of hardware-software systems via appropriate abstractions, models and tools; use of \u00a0Simulink/Stateflow paradigm to design distributed hardware-software systems; understanding key principles for programming in resource constrained environments; performance optimization and performance tuning tailored to such environments; and programming hardware-software systems using custom hardware module such as mobile GPGPUs (general-purpose graphics processing units) for enhanced performance.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.037",
+    "title": "Blockchain Technology",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Decentralized blockchain-based systems, such as Bitcoin and Ethereum, are successful beyond all expectations. Although still in their infancy, they promise to revolutionize how we think of financial, information, and other infrastructures. This course covers the technical aspects of public distributed ledgers, blockchain systems, cryptocurrencies, and smart contracts. Students will learn how these systems are built, how to interact with them, how to design and build secure distributed applications.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.038",
+    "title": "Computational Data Science",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides students the necessary background and experience in data science technology and concepts. Students will gain experience with tackling a complete data science project, from data gathering and preprocessing to data analysis through machine learning tools. Students will learn to apply fundamental concepts in machine learning to data storage and distributed processing as a foundation for their project.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.039",
+    "title": "Theory and Practice of Deep Learning",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course goal is to familiarize students with deep learning for vision, text, reinforcement learning and multimodal combinations thereof. The meaning of deep learning for this course is the training and application of neural networks as prediction models for various setups of input and output modalities. The course will include coding a subset of approaches for vision (so to avoid overlap with computer vision), approaches for sequential data such as 1D\u2010CNNs, temporal causal networks and recurrent neural networks, multimodal approaches, attention models, explainable AI and generative adversarial neural nets. The coding will cover the whole chain from data loader to training to parameter tuning to performance evaluation. The course will also focus on important practical aspects which are required to make the training part of deep learning work on smaller datasets such as transfer learning, the various forms of data augmentation, different optimizers and learning rate tuning.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.040",
+    "title": "Natural Language Processing",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Natural Language Processing (NLP) is an important area within the general field of artificial Intelligence (AI). Modern NLP models focus on using machine learning algorithms for solving various text processing problems. This course covers fundamental topics within the domain of NLP, including part-of-speech tagging, word embeddings, chunking, syntactic parsing, semantic role labeling, semantic parsing, named entity recognition, sentiment analysis, generation, summarization and machine translation. Students will get a chance to learn fundamental algorithms as well as state-of-the-art, deep-learning based techniques for NLP and will get a chance to implement and play with advanced NLP algorithms and models.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.041",
+    "title": "Distributed Systems and Computing",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces fundamental concepts for designing and implementing large\u2010scale distributed systems. The course will not only focus on the design aspects of distributed systems, but will also focus on the fundamental principles to ensure the correctness in a distributed environment. We will apply the concepts via hands on assignments using GO programming language. The course will also deep dive into specific concepts of distributed systems e.g. designing distributed file systems (such as in Google File Systems) to accommodate arbitrarily many application\u2010level users. Finally, we will discuss concepts on recovering from faults (both normal and byzantine) in a distributed system.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.042",
+    "title": "Foundations of Cybersecurity",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides students with a basic appreciation and understanding of the core concepts of information security. Topics to be covered include concepts for confidentiality, integrity and availability; introduction to cybercrimes and security issues; threats to information systems and devices; cryptographic primitives such as symmetric and asymmetric cryptography; core problems such as random number generation, entropy, and key distribution; and common topics such as security protocols and public\u2010key infrastructures.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.043",
+    "title": "Database and Big Data Systems",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Database systems manage data which is at the heart of modern computing applications. We are in the era of big data, in which data is generated from many sources, in high velocity and with great variety. This poses numerous challenges in using and improving database technologies. Big data systems designed to support analytics are maturing and are becoming increasingly important to many applications.\nThis course covers the fundamentals of traditional databases, such as Oracle and MySQL, and core ideas of recent big data systems. Students will learn important problems in data management that these systems are designed to solve. They will experience with building applications on top of traditional databases, namely SQLite, and state\u2010of\u2010the\u2010art big data platforms, namely MongoDB and Apache Spark. These systems will be running both locally and on the Amazon cloud (Amazon Web Service). The students will be able to determine for themselves the advantages and disadvantages of different systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.044",
+    "title": "System Security",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course covers the security of users, individual computer systems, including personal computers, smart cards and embedded platforms. The course starts with considerations of common security flaws in a computer system, security of widely used computer platforms and user authentication. Then, topics such as physical\u2010layer attacks and tamper resistant hardware are discussed. Finally, the course ends with a set of selected security topics like biometrics, computer forensics, and Bitcoin.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.045",
+    "title": "Information Retrieval",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Automatic methods of Information Retrieval (IR) have gained greater significance in recent years due to the dramatic increase in the amount of data available on the Web. The data is often present in multiple forms (such as text, image,\u00a0video) and hence it is necessary that the IR techniques being deployed on the web are able to perform various\u00a0operations such as search and retrieval across all these different data formats. In this course, the study of IR will be focused on the methodologies of indexing, processing, and querying of primary textual data and will be extended to video and image data in the latter part of the course. The primary learning objective of the course will be \u2013 i) to gain knowledge about the basic concepts and techniques of IR.; ii) understand the basic functionality and underlying algorithm of an IR system.; iii) understand modern neural networks and deep learning-based techniques that are used in today\u2019s\u2019 IR systems.; and iv) to learn about several applications of e.g., question answering, image, and video retrieval; v) learn how to develop a basic IR system from scratch and evaluate the system; vi) learn classification, clustering, topic modeling which are the core modules in an IR system.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "50.046",
+    "title": "Cloud Computing and Internet of Things",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The Internet of Things and its integration with cloud computing are transforming our world in a fundamental way. This course teaches some of the essential IoT and cloud computing technologies from the ground up. Specific topics covered include IoT devices programming (Arduino), sensing technologies, IoT protocols (Zigbee, LPWAN, MQTT), and cloud-based IoT architectures and platforms. Students will learn how to design, develop, and deploy end-to-end cloud-based IoT applications, by identifying various performance bottlenecks and using proper cloud computing services to make the IoT architecture scalable.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.116",
+    "title": "AI for Healthcare (Term 7)",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces the concept of artificial intelligence through machine learning and deep learning algorithms. In evidence\u2010based medicine, it is important to gather useful insights from both structured (e.g. data collected by machines) and unstructured data (e.g. notes from clinicians\u2019 observations). The course highlights the use of AI for medical diagnostics, doctor consultation, personalized disease treatments, electronic health records, drug discovery and others. This poses both opportunities and challenges to gather buy\u2010in from various stakeholders, namely patients, doctors, researchers, and telehealth. In their various group projects, students will get to work on real\u2010life healthcare problems faced in hospitals and use AI to solve them.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.117",
+    "title": "Brain-Inspired Computing and its Applications (Term 8)",
+    "type": "ISTD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is offered to both undergraduates and graduates, and focuses on understanding the fundamental principles of brain and cognitive functions used for edge computing, artificial intelligence (AI) tasks and bioinformatics. This includes advanced theoretical models and practical aspect of major processes, such as description of neurons, the response of neurons to sensory stimuli, neuronal networks, state-of-the-art brain-inspired computer architectures and chips. Other topics covered include: statistical inference, decision making and so on. Speakers will be invited for advanced topics.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  }
+]
