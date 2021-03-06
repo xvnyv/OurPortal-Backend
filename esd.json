@@ -1,0 +1,272 @@
+[
+  {
+    "subject_code": "40.001",
+    "title": "Probability",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course aims at providing the students with the basic tools for modelling and analysing situations that involve uncertainty and will consider applications in various fields. The course will develop a rigorous analysis of finite probability models and provide an introduction to infinite models. The course will cover the following topics: axioms of probability, conditional probability and independence, random variables, random vectors, probability distributions, properties of expectation and limit theorems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.002",
+    "title": "Optimisation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course covers a broad range of optimisation algorithms and models. The course will cover the following topics: linear programming, simplex algorithm, duality, sensitivity analysis, two player zero-sum games, network optimisation, minimum cost flow, network simplex algorithm, integer programming, branch and bound methods, cutting plane methods, dynamic programming. Throughout the course, a number of applications from various areas will be discussed.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.004",
+    "title": "Statistics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course provides an introduction to applied statistics and data analysis. The course will cover the following topics: collecting and exploring data, estimation and hypothesis testing, linear regression, analysis of variance and elementary methods in non-parametric statistics. Applications and examples based on engineering systems data will be given.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.011",
+    "title": "Data and Business Analytics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides an introduction to the Engineering Systems and Design pillar by focusing on using industrial or commercial data to identify an opportunity for system improvement and estimating the value of this improvement to the system owner. A signature feature of the course and the primary motivation for the course material comes from a team-based, semester-long project for an external client. Students develop skills in organising industrial projects and in presenting their results in oral, written, and poster form. In addition, problems in improving system throughput and flowtime are used throughout to motivate many of the topics. Students acquire skills in data manipulation, data visualisation, data analysis, system modelling, revenue and cost estimation, financial ratio analysis, and business simulation.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.012",
+    "title": "Manufacturing and Service Operations",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces concepts and techniques related to the design, planning, control, and improvement of both manufacturing and service systems.\u00a0The course provides basic definitions of operations management terms, tools and techniques for analyzing system operations, and a strategic context for making operational decisions. In particular, the topics covered include: Manufacturing and inventory decisions for single and multi-echelon systems under deterministic and stochastic demand in the presence or absence of production/transportation lead time; trade-off between fixed cost of production and inventory holding costs; trade-off between holding and back-order/stock-out costs;\nstochastic modelling and queuing analysis for analyzing transient and steady-state performance of service systems; cost analysis of multi-server queues and network of queues; priority queues; risk pooling in manufacturing and service systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.014",
+    "title": "Engineering Systems Architecture",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The purpose of this course is to prepare students to exercise leadership in data analytics and decision support projects. The topics and skills to be taught are drawn from data science, decision science, operations research, design science, project management, and system architecture. The organizing principle of the course is a process view of a typical decision support project: Understand the need, design the database, transform the data, visualize the data, develop the decision support, and design the user application. We demonstrate how ethical considerations can be raised through use-cases and an awareness of the misuse of data visualization. Conceptual topics are illustrated with case studies, practical applications, and software implementations. Students also conduct a term-long team design project culminating in a prototype web-based, database-supported, decision support tool.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.015",
+    "title": "Simulation Modelling and Analysis",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will introduce students to various aspects of analyzing complex systems using simulation methodologies. The course will address broadly four main forms of simulation of systems:\nCase studies with applications to airport facility design, \ufb01nancial engineering, healthcare (A&E), and inventory management will be discussed.\u00a0 Implementation of simulation techniques, comparison of competing designs and statistical analysis of output will be conducted using a variety of programming tools including AnyLogic, MS Excel, and R.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.016",
+    "title": "The Analytics Edge",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The increasing availability of data is changing the way organizations are thinking about themselves and the way they interact with the world. Data is helping improve the profits of businesses, the quality of life of individuals, the predictions on performance of sports teams and social interactions. In this course you will learn how to use data and analytics to give you an edge. The course will expose students to real world examples of how analytics is being used with examples from Moneyball, Watson and the Framingham Heart Study among others. Through these examples you will learn on how to use tools of analytics such as linear regression, logistic regression, classification and regression trees, graphical models, visualization, text analytics, clustering and optimization in practice. The statistical software R and spreadsheets will be used in the course.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.017",
+    "title": "Probability and Statistics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course builds upon the material taught in Modelling Uncertainty. The course will provide students with the foundations of data analysis, and give them tools for analyzing situations that involve uncertainty and building statistical models. It will also develop students\u2019 critical thinking skills. Applications and examples relevant to engineering systems will be given. The topics covered will include: multivariate normal, Poisson process, limit theorems, regression, point and interval estimation, hypothesis testing, analysis of variance, and introductory Bayesian statistics.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.230",
+    "title": "Sustainable Engineering",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Sustainable engineering is the integration of social, environmental, and economic considerations in the design of products, processes, and engineered systems. This course introduces the concept of sustainability \u2013 both theory and applications \u2013 to engineers and designers. Students will apply tools to perform environmental impact assessment, life-cycle cost and benefits analyses, which provide decision guidance on the design, maintenance, and operations of products and systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.232",
+    "title": "Water Resources Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The goal of this course is to develop basic skills and knowledge for modelling, managing and planning water resources systems in a participated and sustainable way. Particular emphasis is given to 1) the application of statistical modelling and optimisation techniques to the design and management of natural and urban water systems, and 2) the implementation of these techniques in numerical computing environments (e.g., MatLab and R). A key aspect of the course is a term-long project.\nTopics include:\n\u2022 Introduction to water resources planning and management;\n\u2022 River basins management (modelling the socio-economic functions in a river basin, modelling of hydrological and hydraulic processes, decision-making problems);\n\u2022 Urban water systems (the urban water cycle, urban drainage, water supply);\n\u2022 Design of Decision Support Systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.240",
+    "title": "Investment Science",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will focus on the financial theory of asset pricing. While this course will be broad in scope and will cover many different topics relating to finance, a particular emphasis will be placed on topics related to financial markets. The primary topics covered in the class include present value, asset valuation, expected utility, portfolio selection, and the trade-off between risk and return.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.242",
+    "title": "Derivative Pricing and Risk Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Introduction to the theory and practice of mathematical finance: basics of derivative securities; interest rate and bonds; forward and futures contracts, hedging using futures contracts; option contracts and arbitrage relationship; binomial model, no-arbitrage pricing, risk-neutral pricing, and American options pricing; Brownian motion, Black-Scholes-Merton model, delta hedging, Greek letters, implied volatility, and volatility smile; classical and advanced portfolio management and execution models and strategies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.260",
+    "title": "Supply Chain Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Introduces concepts of supply chain design and operation. Topics include demand estimation, location and capacity planning, process analysis, inventory management, revenue management, supply chain procurement and coordination, and emerging topics in supply chains. A major aspect of the class is a student project on supply chain design.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.302",
+    "title": "Advanced Topics in Optimisation#",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is a follow-up to the ESD core course in Optimisation that students take in Term 4. The course will cover advanced topics in optimisation with a strong focus on modelling, formulations and optimisation techniques. Students will be introduced to the basics and design of algebraic modelling languages and spreadsheet models for describing optimisation problems. The primary application on which the course will be based is scheduling. Through the application, students will be exposed to advanced topics in optimisation such as proving optimality of schedules, integer programming formulations, heuristics, deterministic and stochastic dynamic optimization frameworks.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.305",
+    "title": "Advanced Topics in Stochastic Modelling#",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is a follow-up to the introduction course on Stochastic Modelling. Students learn advanced methods in stochastic modelling with a focus on business, engineering and financial math applications. Topics to be covered include renewal theory and martingales (discrete time). Time permitting other topics such as branching processes, spatial processes or stochastic networks could be introduced.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.316",
+    "title": "Game Theory",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course will provide a consistent framework for game-theoretic concepts, some of which have already been informally presented to the students in other courses. The course will cover the basic concepts in game theory, allowing the students to use strategic models in their capstone research.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.317",
+    "title": "Financial Systems Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is a course in computational finance in which students learn the tools for delivering financial services and the algorithms used to price complex financial instruments (derivatives). It also abstracts the design of financial services, focusing on interface design, which reduces to language design. Only moderate coding proficiency is required (Python 3) but there are weekly coding exercises. The design exercise is to propose an interactive, distributed trading game and to specify the interfaces. Topics include:\n\u2022 Price discovery via an interactive, distributed trading game\n\u2022 Distributed version control\n\u2022 Distributed computing\n\u2022 Distributed data storage and retrieval via a private blockchain\n\u2022 Interfaces described as domain-specific \u201clittle languages\u201d\n\u2022 System design viewed as interface design, and hence as language design\n\u2022 Introductory topics in Computational Finance:\n\n\t\u25e6Computation of derivatives via finite difference\n\t\u25e6Numerical solution of ODEs\n\t\u25e6Numerical solution of PDEs\n\t\u25e6Monte Carlo simulation for option pricing\n\t\u25e6Monte Carlo variance reduction techniques\n\t\u25e6Pricing of American options\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.318",
+    "title": "Supply Chain Digitalisation and Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Successful orchestration of planning and execution processes across virtual and global supply chain networks is a critical success factor for today\u2019s businesses. This necessitates tight information integration across business functions and a strong alignment between the business and information technology functions. In the first half of the course we will study supply chain operations of a global manufacturing and distribution company, the NOVA Corporation. Using an experiential simulation of the company\u2019s supply chain, we will identify common errors in the design of such systems. We will see in greater detail how logistics policies, organizational design, performance measurement systems, information flows, and even currency fluctuations can impact a company\u2019s performance. Customer requirements ultimately determine a company\u2019s manufacturing and distribution system requirements. The course material is unified around the theme of applying five basic principles of supply chain management to global manufacturing and logistics. The second half of the course develops a framework and process for discovering the value potential of digitalisation and ensuring value realization from investments in digital technologies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.319",
+    "title": "Statistical and Machine Learning",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "An agent is intelligent if it perceives its environment and takes actions that maximize its chances of successfully achieving its goals. In this course, we will study how to imbue machines with intelligence, focusing on foundational principles and mathematical theories of real-world modeling, problem solving and statistical learning. We will borrow strategies from biological intelligence such as neural networks and reinforcement learning. Students will learn powerful concepts from decision theory, information theory, generative models, deep learning, dimensionality reduction, expectation-maximization, time-series prediction, control theory and machine reasoning, and will exploit software tools for building intelligent systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.320",
+    "title": "Airport Systems Planning and Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "An airport is one of the most complex engineering systems in existence. It must simultaneously achieve ultra-high levels of safety and security while providing high throughput of passengers and cargo on a daily basis. It is an integrated system of systems bringing together airlines, air traffic controllers, baggage and cargo handlers, airport operators, customs, immigration, and security officers, as well as various ancillary support services such as connection to ground transportation and the provision of food, beverage, and emergency services. If you can appreciate the multiple dimensions of planning and design of an airport system, you are well-prepared to tackle many other system of systems challenges.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.321",
+    "title": "Airport Systems Modelling and Simulation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Airports are complex systems that require the use of specialized modelling tools to be operated and managed efficiently. This course aims to provide students with appropriate knowledge and modelling skillset to critically apply simulation and optimization tools for airport systems planning, management and design. The modelling mindset is also applicable to other complex systems such as manufacturing facilities and hospitals. Topics include: airside capacity estimation, optimization of airport capacity utilization, airport demand management, simulation of airside aircraft movements, simulation of landside processes and air traffic flow management. A major aspect of this class is a final project where students are required to conduct a comprehensive simulation study on airport management using fast-time airport simulation tools (TAAM, Airtop, or CAST).\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.323",
+    "title": "Equity Valuation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces two key tools used by professional investors.\nTogether, students will identify and validate investment theses, and use the equity valuation models to identify potential investment opportunities.\u00a0 The course focuses primarily on the valuation of technology and engineering services firms.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.324",
+    "title": "Fundamentals of Investing",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces topics relevant for students who want to understand the modern framework for evaluating investment opportunities. It combines key elements of managerial accounting and finance, as well as modern portfolio and asset pricing theory. After completing this course, students will be able to apply the core tool of analytic finance to assess the value of company projects, including those undertaken by start\u2010ups. They will also be able to analyze financial market conditions to recommend investment strategies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.102",
+    "title": "Energy Systems and Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Broadly, this course aims to acquaint students with both the operation and economics of modern electric power systems. Topics include optimal power flow, unit commitment, economic dispatch, electricity markets, as well as emerging techniques for renewable energy integration and demand response. By the end of the course, students will have developed a firm grasp of optimal power system operations, the emerging challenges facing deep renewable energy integration, tools to effectively tackle said challenges, as well as the energy system and markets in Singapore. \u200b\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.104",
+    "title": "Networked Life",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Driven by a number of real-world questions about our networked lives, this course explores the technology behind the multi-trillion dollar Internet and wireless industries.\nHow does Google sell ad space and rank webpages? How does Netflix recommend movies and Amazon rank products? How can you influence people on Facebook and Twitter and can you really reach anyone in six steps? How can you make your video viral on YouTube? Why doesn\u2019t the Internet collapse under congestion and does it have an Achilles\u2019 heel? Why are you charged per gigabyte for mobile data? How does CDMA work in my smartphone? These are some of the networked life issues the course will address in providing answers to the above questions, which are the subject of a fascinating intersection of disciplines, including computer science, physics, sociology, mathematics and economics. Researchers from these areas all strive to quantify and explain the growing complexity and connectivity of the world around us, and they have begun to develop a rich new science along the way to reason about the new social, economic and technological networks.\nThe course will motivate the student through actual applications to enable both an overview of these systems and a fundamental understanding of the key ideas. It will introduce the various tools and modelling concepts that apply in each situation, targeting at a truly interdisciplinary learning experience.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.107",
+    "title": "Urban Transportation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides students with an understanding of current challenges and opportunities in land transportation. It introduces road vehicle propulsion technologies and transportation systems modelling, including the tools and methods to assess technologies and system performance. Topics include conventional and alternative vehicle powertrains, intelligent transportation systems (ITS), transportation network modelling, traffic simulation, and travel demand modelling. Students will complete a project on a subject of their choosing.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  }
+]
