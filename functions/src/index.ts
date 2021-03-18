@@ -3,7 +3,7 @@ const niceware = require("niceware");
 var nodemailer = require("nodemailer");
 
 // pass emailID in body
-export const addToFamily = functions.https.onRequest(
+export const sendRequest = functions.https.onRequest(
   async (req: functions.Request, res: functions.Response) => {
     // enable CORS
     res.set("Access-Control-Allow-Origin", "*");
@@ -48,8 +48,7 @@ export const addToFamily = functions.https.onRequest(
         console.log(err);
       }
       console.log("Email sent!!!");
+      res.send(200);
     });
-
-    res.send(200);
   }
 );
