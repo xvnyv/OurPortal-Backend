@@ -45,7 +45,8 @@ def import_to_db(filepath):
     modules = json.load(f)
 
     for mod in modules:
-        doc_ref = db.collection(u'modules').document(mod['subject_code'])
+        print('setting mod: ' + mod['courseCode'])
+        doc_ref = db.collection(u'modules').document(mod['courseCode'])
         doc_ref.set(mod)
 
 
@@ -176,7 +177,7 @@ def esd():
             except:
                 print('this one died\n====================\n')
 
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/esd.json', 'w')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/esd.json', 'w')
     json.dump(modules, f)
 
 
@@ -225,7 +226,7 @@ def istd():
             except:
                 print('this one died\n====================\n')
 
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/istd.json', 'w')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/istd.json', 'w')
     json.dump(modules, f)
 
 
@@ -268,12 +269,12 @@ def asd():
             except:
                 print('this one died\n====================\n')
 
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/asd.json', 'w')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/asd.json', 'w')
     json.dump(modules, f)
 
 
 def export_to_json():
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'w')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/modules.json', 'w')
     modules = []
     docs = db.collection(u'modules').stream()
 
@@ -284,7 +285,7 @@ def export_to_json():
 
 
 def edit_instructor_name():
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'r')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/modules.json', 'r')
     modules = json.load(f)
 
     for module in modules:
@@ -297,7 +298,7 @@ def edit_instructor_name():
         del module['instructor']
     f.close()
 
-    f = open(f'{pathlib.Path(__file__).parent.absolute()}/modules.json', 'w')
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/modules.json', 'w')
     json.dump(modules, f)
 
 
@@ -341,8 +342,43 @@ def update_availability():
         })
 
 
+def update_json():
+    f = open(f'{pathlib.Path(__file__).parent.absolute()}/json/modules.json', 'r+')
+    modules = json.load(f)
+
+    for module in modules:
+        module['instructorFirstName'] = module['instructor_first_name']
+        module['instructorLastName'] = module['instructor_last_name']
+        module['courseNumber'] = module['subject_code']
+        module['courseName'] = module['title']
+        module['totalSlots'] = 50
+        module['availableSlots'] = 50
+        del module['instructor_first_name']
+        del module['instructor_last_name']
+        del module['subject_code']
+        del module['title']
+        try:
+            del module['total_slots']
+            del module['available_slots']
+        except:
+            pass
+
+    json.dump(modules, f)
+
+
+def populate_availability():
+    f = open(
+        f'{pathlib.Path(__file__).parent.absolute()}/json/reformatted_modules.json', 'r')
+    modules = json.load(f)
+
+    availability_c = db.collection(u'availability')
+    for mod in modules:
+        doc_ref = availability_c.document(mod['courseCode'])
+        doc_ref.set({'available': 50})
+
+
 def main():
-    import_to_db(f'{pathlib.Path(__file__).parent.absolute()}/asd.json')
+    populate_availability()
 
 
 if __name__ == '__main__':

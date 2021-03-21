@@ -22,27 +22,23 @@ const doesTradeExist = (
     });
 };
 
-const getHASSMod = (
+const getHASSMod = async (
   db: FirebaseFirestore.CollectionReference,
   studentUID: string
 ) => {
   // get all data from user
-  db.doc(studentUID)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        // get modules
-        var modules = doc.data()?.modules;
-
-        // test modules
-        for (let element of modules) {
-          if (/02\.\S+/gm.test(element)) {
-            console.log("Found " + element);
-            return element;
-          }
-        }
+  var doc = await db.doc(studentUID).get();
+  if (doc.exists) {
+    // get modules
+    var modules = doc.data()?.modules;
+    // test modules
+    for (let element of modules) {
+      if (/02\.\S+/gm.test(element)) {
+        console.log("Found " + element);
+        return element;
       }
-    });
+    }
+  }
 };
 
 export const test = functions.https.onRequest(
@@ -51,7 +47,7 @@ export const test = functions.https.onRequest(
     const db = admin.firestore().collection("users");
 
     // some async issue here
-    var a = getHASSMod(db, senderID);
+    var a = await getHASSMod(db, senderID);
     console.log(a);
     res.status(400).send("HELLO");
   }
