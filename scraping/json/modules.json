@@ -700,5 +700,575 @@
     "description": "This course is offered to both undergraduates and graduates, and focuses on understanding the fundamental principles of brain and cognitive functions used for edge computing, artificial intelligence (AI) tasks and bioinformatics. This includes advanced theoretical models and practical aspect of major processes, such as description of neurons, the response of neurons to sensory stimuli, neuronal networks, state-of-the-art brain-inspired computer architectures and chips. Other topics covered include: statistical inference, decision making and so on. Speakers will be invited for advanced topics.\n",
     "total_slots": 50,
     "available_slots": 50
+  },
+  {
+    "subject_code": "40.001",
+    "title": "Probability",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course aims at providing the students with the basic tools for modelling and analysing situations that involve uncertainty and will consider applications in various fields. The course will develop a rigorous analysis of finite probability models and provide an introduction to infinite models. The course will cover the following topics: axioms of probability, conditional probability and independence, random variables, random vectors, probability distributions, properties of expectation and limit theorems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.002",
+    "title": "Optimisation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course covers a broad range of optimisation algorithms and models. The course will cover the following topics: linear programming, simplex algorithm, duality, sensitivity analysis, two player zero-sum games, network optimisation, minimum cost flow, network simplex algorithm, integer programming, branch and bound methods, cutting plane methods, dynamic programming. Throughout the course, a number of applications from various areas will be discussed.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.004",
+    "title": "Statistics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course provides an introduction to applied statistics and data analysis. The course will cover the following topics: collecting and exploring data, estimation and hypothesis testing, linear regression, analysis of variance and elementary methods in non-parametric statistics. Applications and examples based on engineering systems data will be given.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.011",
+    "title": "Data and Business Analytics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides an introduction to the Engineering Systems and Design pillar by focusing on using industrial or commercial data to identify an opportunity for system improvement and estimating the value of this improvement to the system owner. A signature feature of the course and the primary motivation for the course material comes from a team-based, semester-long project for an external client. Students develop skills in organising industrial projects and in presenting their results in oral, written, and poster form. In addition, problems in improving system throughput and flowtime are used throughout to motivate many of the topics. Students acquire skills in data manipulation, data visualisation, data analysis, system modelling, revenue and cost estimation, financial ratio analysis, and business simulation.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.012",
+    "title": "Manufacturing and Service Operations",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces concepts and techniques related to the design, planning, control, and improvement of both manufacturing and service systems.\u00a0The course provides basic definitions of operations management terms, tools and techniques for analyzing system operations, and a strategic context for making operational decisions. In particular, the topics covered include: Manufacturing and inventory decisions for single and multi-echelon systems under deterministic and stochastic demand in the presence or absence of production/transportation lead time; trade-off between fixed cost of production and inventory holding costs; trade-off between holding and back-order/stock-out costs;\nstochastic modelling and queuing analysis for analyzing transient and steady-state performance of service systems; cost analysis of multi-server queues and network of queues; priority queues; risk pooling in manufacturing and service systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.014",
+    "title": "Engineering Systems Architecture",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The purpose of this course is to prepare students to exercise leadership in data analytics and decision support projects. The topics and skills to be taught are drawn from data science, decision science, operations research, design science, project management, and system architecture. The organizing principle of the course is a process view of a typical decision support project: Understand the need, design the database, transform the data, visualize the data, develop the decision support, and design the user application. We demonstrate how ethical considerations can be raised through use-cases and an awareness of the misuse of data visualization. Conceptual topics are illustrated with case studies, practical applications, and software implementations. Students also conduct a term-long team design project culminating in a prototype web-based, database-supported, decision support tool.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.015",
+    "title": "Simulation Modelling and Analysis",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will introduce students to various aspects of analyzing complex systems using simulation methodologies. The course will address broadly four main forms of simulation of systems:\nCase studies with applications to airport facility design, \ufb01nancial engineering, healthcare (A&E), and inventory management will be discussed.\u00a0 Implementation of simulation techniques, comparison of competing designs and statistical analysis of output will be conducted using a variety of programming tools including AnyLogic, MS Excel, and R.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.016",
+    "title": "The Analytics Edge",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The increasing availability of data is changing the way organizations are thinking about themselves and the way they interact with the world. Data is helping improve the profits of businesses, the quality of life of individuals, the predictions on performance of sports teams and social interactions. In this course you will learn how to use data and analytics to give you an edge. The course will expose students to real world examples of how analytics is being used with examples from Moneyball, Watson and the Framingham Heart Study among others. Through these examples you will learn on how to use tools of analytics such as linear regression, logistic regression, classification and regression trees, graphical models, visualization, text analytics, clustering and optimization in practice. The statistical software R and spreadsheets will be used in the course.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.017",
+    "title": "Probability and Statistics",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course builds upon the material taught in Modelling Uncertainty. The course will provide students with the foundations of data analysis, and give them tools for analyzing situations that involve uncertainty and building statistical models. It will also develop students\u2019 critical thinking skills. Applications and examples relevant to engineering systems will be given. The topics covered will include: multivariate normal, Poisson process, limit theorems, regression, point and interval estimation, hypothesis testing, analysis of variance, and introductory Bayesian statistics.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.230",
+    "title": "Sustainable Engineering",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Sustainable engineering is the integration of social, environmental, and economic considerations in the design of products, processes, and engineered systems. This course introduces the concept of sustainability \u2013 both theory and applications \u2013 to engineers and designers. Students will apply tools to perform environmental impact assessment, life-cycle cost and benefits analyses, which provide decision guidance on the design, maintenance, and operations of products and systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.232",
+    "title": "Water Resources Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The goal of this course is to develop basic skills and knowledge for modelling, managing and planning water resources systems in a participated and sustainable way. Particular emphasis is given to 1) the application of statistical modelling and optimisation techniques to the design and management of natural and urban water systems, and 2) the implementation of these techniques in numerical computing environments (e.g., MatLab and R). A key aspect of the course is a term-long project.\nTopics include:\n\u2022 Introduction to water resources planning and management;\n\u2022 River basins management (modelling the socio-economic functions in a river basin, modelling of hydrological and hydraulic processes, decision-making problems);\n\u2022 Urban water systems (the urban water cycle, urban drainage, water supply);\n\u2022 Design of Decision Support Systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.240",
+    "title": "Investment Science",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will focus on the financial theory of asset pricing. While this course will be broad in scope and will cover many different topics relating to finance, a particular emphasis will be placed on topics related to financial markets. The primary topics covered in the class include present value, asset valuation, expected utility, portfolio selection, and the trade-off between risk and return.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.242",
+    "title": "Derivative Pricing and Risk Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Introduction to the theory and practice of mathematical finance: basics of derivative securities; interest rate and bonds; forward and futures contracts, hedging using futures contracts; option contracts and arbitrage relationship; binomial model, no-arbitrage pricing, risk-neutral pricing, and American options pricing; Brownian motion, Black-Scholes-Merton model, delta hedging, Greek letters, implied volatility, and volatility smile; classical and advanced portfolio management and execution models and strategies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.260",
+    "title": "Supply Chain Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Introduces concepts of supply chain design and operation. Topics include demand estimation, location and capacity planning, process analysis, inventory management, revenue management, supply chain procurement and coordination, and emerging topics in supply chains. A major aspect of the class is a student project on supply chain design.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.302",
+    "title": "Advanced Topics in Optimisation#",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is a follow-up to the ESD core course in Optimisation that students take in Term 4. The course will cover advanced topics in optimisation with a strong focus on modelling, formulations and optimisation techniques. Students will be introduced to the basics and design of algebraic modelling languages and spreadsheet models for describing optimisation problems. The primary application on which the course will be based is scheduling. Through the application, students will be exposed to advanced topics in optimisation such as proving optimality of schedules, integer programming formulations, heuristics, deterministic and stochastic dynamic optimization frameworks.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.305",
+    "title": "Advanced Topics in Stochastic Modelling#",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is a follow-up to the introduction course on Stochastic Modelling. Students learn advanced methods in stochastic modelling with a focus on business, engineering and financial math applications. Topics to be covered include renewal theory and martingales (discrete time). Time permitting other topics such as branching processes, spatial processes or stochastic networks could be introduced.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.316",
+    "title": "Game Theory",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course will provide a consistent framework for game-theoretic concepts, some of which have already been informally presented to the students in other courses. The course will cover the basic concepts in game theory, allowing the students to use strategic models in their capstone research.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.317",
+    "title": "Financial Systems Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This is a course in computational finance in which students learn the tools for delivering financial services and the algorithms used to price complex financial instruments (derivatives). It also abstracts the design of financial services, focusing on interface design, which reduces to language design. Only moderate coding proficiency is required (Python 3) but there are weekly coding exercises. The design exercise is to propose an interactive, distributed trading game and to specify the interfaces. Topics include:\n\u2022 Price discovery via an interactive, distributed trading game\n\u2022 Distributed version control\n\u2022 Distributed computing\n\u2022 Distributed data storage and retrieval via a private blockchain\n\u2022 Interfaces described as domain-specific \u201clittle languages\u201d\n\u2022 System design viewed as interface design, and hence as language design\n\u2022 Introductory topics in Computational Finance:\n\n\t\u25e6Computation of derivatives via finite difference\n\t\u25e6Numerical solution of ODEs\n\t\u25e6Numerical solution of PDEs\n\t\u25e6Monte Carlo simulation for option pricing\n\t\u25e6Monte Carlo variance reduction techniques\n\t\u25e6Pricing of American options\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.318",
+    "title": "Supply Chain Digitalisation and Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Successful orchestration of planning and execution processes across virtual and global supply chain networks is a critical success factor for today\u2019s businesses. This necessitates tight information integration across business functions and a strong alignment between the business and information technology functions. In the first half of the course we will study supply chain operations of a global manufacturing and distribution company, the NOVA Corporation. Using an experiential simulation of the company\u2019s supply chain, we will identify common errors in the design of such systems. We will see in greater detail how logistics policies, organizational design, performance measurement systems, information flows, and even currency fluctuations can impact a company\u2019s performance. Customer requirements ultimately determine a company\u2019s manufacturing and distribution system requirements. The course material is unified around the theme of applying five basic principles of supply chain management to global manufacturing and logistics. The second half of the course develops a framework and process for discovering the value potential of digitalisation and ensuring value realization from investments in digital technologies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.319",
+    "title": "Statistical and Machine Learning",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "An agent is intelligent if it perceives its environment and takes actions that maximize its chances of successfully achieving its goals. In this course, we will study how to imbue machines with intelligence, focusing on foundational principles and mathematical theories of real-world modeling, problem solving and statistical learning. We will borrow strategies from biological intelligence such as neural networks and reinforcement learning. Students will learn powerful concepts from decision theory, information theory, generative models, deep learning, dimensionality reduction, expectation-maximization, time-series prediction, control theory and machine reasoning, and will exploit software tools for building intelligent systems.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.320",
+    "title": "Airport Systems Planning and Design",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "An airport is one of the most complex engineering systems in existence. It must simultaneously achieve ultra-high levels of safety and security while providing high throughput of passengers and cargo on a daily basis. It is an integrated system of systems bringing together airlines, air traffic controllers, baggage and cargo handlers, airport operators, customs, immigration, and security officers, as well as various ancillary support services such as connection to ground transportation and the provision of food, beverage, and emergency services. If you can appreciate the multiple dimensions of planning and design of an airport system, you are well-prepared to tackle many other system of systems challenges.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.321",
+    "title": "Airport Systems Modelling and Simulation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Airports are complex systems that require the use of specialized modelling tools to be operated and managed efficiently. This course aims to provide students with appropriate knowledge and modelling skillset to critically apply simulation and optimization tools for airport systems planning, management and design. The modelling mindset is also applicable to other complex systems such as manufacturing facilities and hospitals. Topics include: airside capacity estimation, optimization of airport capacity utilization, airport demand management, simulation of airside aircraft movements, simulation of landside processes and air traffic flow management. A major aspect of this class is a final project where students are required to conduct a comprehensive simulation study on airport management using fast-time airport simulation tools (TAAM, Airtop, or CAST).\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.323",
+    "title": "Equity Valuation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces two key tools used by professional investors.\nTogether, students will identify and validate investment theses, and use the equity valuation models to identify potential investment opportunities.\u00a0 The course focuses primarily on the valuation of technology and engineering services firms.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "40.324",
+    "title": "Fundamentals of Investing",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces topics relevant for students who want to understand the modern framework for evaluating investment opportunities. It combines key elements of managerial accounting and finance, as well as modern portfolio and asset pricing theory. After completing this course, students will be able to apply the core tool of analytic finance to assess the value of company projects, including those undertaken by start\u2010ups. They will also be able to analyze financial market conditions to recommend investment strategies.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.102",
+    "title": "Energy Systems and Management",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Broadly, this course aims to acquaint students with both the operation and economics of modern electric power systems. Topics include optimal power flow, unit commitment, economic dispatch, electricity markets, as well as emerging techniques for renewable energy integration and demand response. By the end of the course, students will have developed a firm grasp of optimal power system operations, the emerging challenges facing deep renewable energy integration, tools to effectively tackle said challenges, as well as the energy system and markets in Singapore. \u200b\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.104",
+    "title": "Networked Life",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Driven by a number of real-world questions about our networked lives, this course explores the technology behind the multi-trillion dollar Internet and wireless industries.\nHow does Google sell ad space and rank webpages? How does Netflix recommend movies and Amazon rank products? How can you influence people on Facebook and Twitter and can you really reach anyone in six steps? How can you make your video viral on YouTube? Why doesn\u2019t the Internet collapse under congestion and does it have an Achilles\u2019 heel? Why are you charged per gigabyte for mobile data? How does CDMA work in my smartphone? These are some of the networked life issues the course will address in providing answers to the above questions, which are the subject of a fascinating intersection of disciplines, including computer science, physics, sociology, mathematics and economics. Researchers from these areas all strive to quantify and explain the growing complexity and connectivity of the world around us, and they have begun to develop a rich new science along the way to reason about the new social, economic and technological networks.\nThe course will motivate the student through actual applications to enable both an overview of these systems and a fundamental understanding of the key ideas. It will introduce the various tools and modelling concepts that apply in each situation, targeting at a truly interdisciplinary learning experience.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "01.107",
+    "title": "Urban Transportation",
+    "type": "ESD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides students with an understanding of current challenges and opportunities in land transportation. It introduces road vehicle propulsion technologies and transportation systems modelling, including the tools and methods to assess technologies and system performance. Topics include conventional and alternative vehicle powertrains, intelligent transportation systems (ITS), transportation network modelling, traffic simulation, and travel demand modelling. Students will complete a project on a subject of their choosing.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.224",
+    "title": "Artificial & Architectural Intelligences in Design (HTC)",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Today, we are all, voluntarily or involuntarily, surrounded by objects and built environments driven by Artificial Intelligence (AI). This phenomenon has not only led to the automation of designs themselves, but more fundamentally, the automation of design cognition and the optimization of aesthetic imaginations for our cultural futures. If architects and designers are to continue in playing their roles as cultural producers, social activists and technological imaginaries, a holistic understanding of today\u2019s AI systems is essential. Such a foundational knowledge will provide the much-needed historical and theoretical bases for critically reassessing the current nature of design processes and reframing the future culture of architecture and design. The course will begin by tracing the fascinating and intertwined genealogies of artificial intelligence and architectural intelligence from the 1960s onwards. This history will be vividly brought forth to the present with complementary readings on AI aesthetics, AI artists and other emerging AI design topics, such as adversarial-based design algorithms, post-truth redesign of visual culture, unsolicited algorithmic cultivation of collective design tastes, and the territorial politics of computer vision-based surveillances. Beyond the \u2018critical writing\u2019 of AI & Design, students will also work in groups to speculate \u2018critical designs\u2019 based on their newly acquired perspectives on the culture and nature of artificial designs. The deliverables are in the forms of design mock-ups, visual diagrams and written texts.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.222",
+    "title": "Modernism: Technology and Society in Architecture (HTC)",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Studies the essential interrelationships of architectural theory, history, and practice. Examines theoretical investigations not as specialised discourse relating exclusively to architectural production, but as essential and deeply relevant to diverse human social and economic activities, whether they be cultural, aesthetic, philosophical, or professional. Topics and examples are chosen from a wide range of materials and from classical antiquity to contemporary practice. Special topics relating to 21st century urbanisation, emerging economies and ecological and environmental debates will be addressed.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.221",
+    "title": "Traditions: World history connections to vernacular architecture (HTC)",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course provides a general outline of the history of architecture, urbanism and landscapes from early cultures to the present, spanning both western and non-western traditions. It is designed to develop critical tools to analyze and appreciate architecture for its role in creating the spatial environments in which we conduct our lives. Students analyze buildings and the built environment in relation to their contexts and histories of building technology. They assist in understanding and assimilating architectural terms and spatial concepts in the students\u2019 formative years. Instruction and practice in oral and written communication formats are provided.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.213",
+    "title": "Building Information Modeling",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Building Information Modeling (BIM) provides rich, machine-readable representations of proposed building designs. With BIM, it becomes practical to embed into computational tools the accumulated knowledge regarding good design and construction practices. This subject is designed to provide students with fundamental knowledge and basic practical skills of the planning and execution of Building Information Models. It is also aimed to offer opportunities for students to establish a basic understanding of those elements that impact the generation of a Building Information Model, including methods of communication, data creation, social, and economic factors between trades. Building models will be challenged with analysis software to test for various performance criteria. Learning occurs through design cases of building over 4 stories and wide span structures as a way to learn behaviors of all building systems. Students will also use visual programming skills to design parametric schematics.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.212",
+    "title": "Digital Design and Fabrication",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Digital Design and Fabrication investigates the transformation of conceptual design to production documentation and manufacturing within contemporary digital media. Situated at the threshold between virtual and physical, design information and artifacts, it is comprised of both design computation methods as well as material fabrication techniques. The course introduces advanced concepts of design computation such as imperative and declarative techniques of design description and analysis for fabrication, computer aided design and manufacturing workflows and technologies of materialization such as conventional fabrication protocols as well as rapid prototyping and numerically controlled manufacturing.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.211",
+    "title": "Introduction to Design Computation",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course is an introduction to concepts and methods, as well as practical techniques in architectural design computation. It is comprised of three learning segments: (a) foundations in computational geometry; (b) principles of algorithmic design; and (c) associative/parametric design. Students will gain experience in geometric modelling, visual programming, and reading and writing simple generative computer programs through a series of active learning sessions and design exercises.\nIn this course, students will learn to create, analyze and evaluate computational and geometric constructs in a design context. The course provides students with a basis for developing a critical approach towards using computational tools over the course of their architectural education and beyond. The success of students is evaluated not solely on technical accomplishments, but according to the integrity of the produced design processes and products in engaging the given theoretical concepts.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.203",
+    "title": "Architectural Energy Systems",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Energy poses one of the greatest challenges to a future sustainable built environment. The individual buildings that comprise our ever-expanding urban landscape retain the potential to contribute significant efficiency savings to an overall mix of strategies necessary for a sustainable future. This class will address the needs of a variety of building types and the systems that distribute energy-based resources to their occupants.\nThe course material will be taught using a weekly series of lectures, recitations, and assignments. Two lectures per week introduce key concepts and illustrative case studies. One recitation per week further explores information from the lectures through hands-on activities and software tutorials. Assignments will be based upon the knowledge gained in the lectures and recitations. Student groups will apply the assignments to conceptual space design, a chosen studio project, or a semester-long design project.\nThere will be no formal exams in this course. You will be graded on your ability to utilize and explain the course concepts through your work on the ongoing class project. Recitations will not be formally graded, but will count towards the participation portion of a student\u2019s grade and are necessary to complete the homework assignments.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.202",
+    "title": "Architectural Structure & Enclosure Design",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course provides students with basic knowledge of structural analysis and design. The course emphasizes the understanding of building structure as architectural elements and fosters a design attitude based on the understanding of forces and reactions. Students will design structures using force flow diagrams and simple computational tools and will gain an appreciation of the importance of structural design today, with an emphasis on the versatile performative potential of structures.\nThe course will cover the following topics: basic analysis and design of structures; approximate loadings for buildings, basic axial bending and shear forces in typical structural elements; the importance of fixity and ground reactions relationship of architectural and structural properties; materials in relation to forces; structural systems as space generator and facade. The laboratory exercises include analysis, basic FEA modelling, physical model building and designing.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.201",
+    "title": "Architecture Science & Technology",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The development of a building design to its actual construction is not a predetermined process. Each architectural design is an autonomous and unique scenario demanding a high level of creative invention supported by current and responsible technological knowledge. This understanding of the technology of assemblies should be less a mere familiarity with devices and products but rather, a working understanding of the forces, both general and specific, that affect the performance of building systems and the architecture. With this understanding, architects and engineers can then design physical assemblies and systems that both respond to and collaborate with these forces. The eventual humanity and beauty of any architectural construct is an almost pure reflection of the depth of both the thought of and individual, and the highly complex interactions of a collective effort. This course intends for the full depth of design possibilities to unfold and be revealed, not constrained, as technological issues are introduced. The building technology sequence in the core curriculum terms begins with an introduction to the performance requirements, physics and physical phenomena and construction systems of contemporary buildings. The intention of this class will be to link the diversity of physical forces relevant to building performance to the materials, components, assemblies and large scale systems that control and direct these forces and guide performance. This introduction will be phased to deliver to the entering Architecture and Sustainable Design student key concepts and essential analytical skills necessary for the rigorous selection and design of structural systems, enclosure and fa\u00e7ade systems, environmental and energy systems, and circulation and interior systems. The scope of the class includes these major systems to an intermediate level of understanding and an introductory level of analysis and system design. Subsequent classes in the building technologies will build on all four systems in both detail complexity and integrative depth.\nThis class is an introduction to the science and physics of building design and performance and an understanding of contemporary building construction methods, materials, and technical information necessary for a responsible making of a humane built environment. It is also intended as an introduction to the historical foundations and cultural contexts in which construction technologies have been developed over time. The focus of the class will be put on an understanding of tectonic principles: the materials and components that comprise buildings, their relationship to the manufacturing processes, and the forces and physical phenomenon of performance requirements. Beyond that there will also be a substantial discussion of the environmental consequences of the construction and operation of the built environment. While the scope of the course is broad, it is not, and could never be, a comprehensive treatment of all issues regarding the design and construction of buildings. However, the course will address all of the primary forces that determine the configuration, materials and processes of construction and the integration of building systems into the completed whole.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.112",
+    "title": "Sustainable Design Option Studio 2",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The Sustainable Design Studio Option 2 extends 20.111 Sustainable Design Studio Option 1, and provides further studio options to explore the multi-dimensional issues of sustainable design through a variety of lenses and at diverse temporal and spatial scales. Issues of resource efficiency, resilience, material and typological innovation, micro-climatic and site affordances, life-cycles and metabolism, and many other critical issues will serve as the projective context in which students will develop critical design solutions for small, medium and large scale architectures and urban interventions.\nThe precise operational directives, briefs and specific sites, will be defined by the individual design critics in separate yet interconnected studio options. Each of these individual studio options, will be led by ASD faculty and/or visiting professors from around the world, and culminate in a speculative final project that will articulate architecturally specific positions regarding sustainable design in real world projects.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.111",
+    "title": "Sustainable Design Option Studio 1",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The Sustainable Design Studio Option builds upon and continues the Architectural Core Studio sequence, and explores the multi-dimensional issues of sustainable design through a variety of lenses and at diverse temporal and spatial scales. Issues of resource efficiency, resilience, material and typological innovation, micro-climatic and site affordances, life-cycles and metabolism, and many other critical issues will serve as the projective context in which students will develop critical design solutions for small, medium and large scale architectures and urban interventions.\nThe precise operational directives, precise briefs and specific sites, will be defined by the individual design critics in separate yet interconnected studio options, conducted in parallel under the umbrella of sustainable design. Each of these individual studio options, will be led by ASD faculty and visiting professors from around the world, and culminate in a speculative final project that will articulate architecturally specific positions regarding sustainable design in real world projects.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.103",
+    "title": "Architecture Core Studio 3",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Architecture Core Studio 3 expands the complexity of architectural design challenges further to the issue of human habitation. Seeking sustainable approaches to high-density living students will investigate the essential physical and social requirements for human dwelling and the mutual potentials evolving between the urban condition and innovative forms of residence.\nApplying integrative design strategies building structures will be developed as coherent synthesis of load-bearing systems and of concepts for spatial hierarchies that anticipate issues like program, circulation and relation to the territory. With the provision of human comfort being a primary concern of habitation the design studio will also focus on the envelope\u2019s capacities to control and facilitate exposure to climate, on its materiality and composition. In coordination with other courses students will expand design strategies to an integrative and simultaneous development of architectural form and building systems and develop an understanding of the relevance of building performance parameters.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.102",
+    "title": "Architecture Core Studio 2",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Architecture Core Studio 2 expands the scope of architectural problems to include the urban scale, complex building structures, as well as cultural and programmatic materials (inhabitation and human factors). Two subsequent and interrelated design problems engage students in programs of public institutions in the context of higher education in Singapore. At the end of the studio, students are expected to be able to translate spatial, material, programmatic, and representational ideas into a comprehensive and powerful architectural proposal that articulates nuanced and convincing approaches to institutional building programs in the Singapore urban context.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.101",
+    "title": "Architecture Core Studio 1",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The studio establishes foundations for architectural design through three projects that build in scope and complexity to have students engage issues of 3-dimensional geometry and drawing, space and component aggregation, ordering systems, structure, circulation and narrative, and tectonics. The design process is introduced as an iterative form of research, experimentation, and play, enabling students to develop conceptual ideas about architecture and translate them into a series of physical and material investigations. Each exercise is envisioned as an introduction to design thinking through an increasingly more complex set of relationships with regard to formal procedures, programs, and systems.\nStudents are required to work in both physical and digital models, and rehearse both analogue and digital drawing techniques for each exercise. The exercises will test both conceptual and analytical thinking as well as aid in the development of representational skills.\n\u00a0\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.099",
+    "title": "Urban Sketching",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Sketching is a way of communication and expression. Sketching architecture is a way to understand and record our spatial environment. Urban Sketching is designed to equip students with fundamental sketching skills with a focus on the urban fabrics and landscapes.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.321",
+    "title": "Architecture Acoustics",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course introduces architectural and urban acoustics by emphasizing the importance of space shaping, material selection, indoor and outdoor sound planning for enhancing our aural experiences. Topics of this course will include the fundamentals of sound and hearing, the acoustic properties of materials, room acoustics, and urban sound planning. The course is integrated with a series of lectures, reading assignments, acoustic measurements, and field trips to performing spaces. Throughout this course, students will gain the knowledge to evaluate acoustic conditions of spaces and to design indoor and outdoor environments with sound in mind.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.320",
+    "title": "Project Management in the Built Environment",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Project Management is a course set in the context of Singapore\u2019s Building Construction industry. It covers management topics necessary to bring about the successful completion of building projects, including scheduling, resource allocation, risk assessment, budgeting, and cost planning, with emphasis on sustainable design and construction. Project management aims at understanding fundamental principles, modelling methods, and tools, as well as the best practices employed in the industry today. As a management course, students are required to work individually but also in groups to practice their management skills.\nThe class is conducted as a project-based module and there will be no formal exams. Lectures are conducted weekly for students to understand the key principles and how to apply them practically, looking at different case studies. Assignments entail different project management knowledge areas that are eventually compiled into a group report to demonstrate the group\u2019s ability to manage a building project comprehensively.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.319",
+    "title": "Architectural Theory and Design Application in the 20th-21st Century",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The process upon which contemporary twentieth and twenty-first century-architects design, draw, write, and build is the focus of this course. The concomitant discourse amongst critics, the resulting scholarly critique, and the written design statement is a reflection of a complex set of values, hierarchies, and judgement criteria. This course\u2019s goal is to deconstruct the embedded and often at times hidden sets of values that influence the creation of architecture and govern its design, construction, production, use, and occasional demise. Students will emerge from this course with a thorough understanding of modern canonical design philosophies in conjunction with a more concise understanding of what forces govern the growth and development of their nascent design ethos.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.318",
+    "title": "Creative Machine Learning",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course provides an overview of today\u2019s machine learning apparatus for generative design and in turn speculates on the ways in which architectural design process itself might be altered as a result of this epistemological shift towards a \u2018Software 2.0\u2019 paradigm. By situating the discourse within an experimental prototyping context, students will not only gain the practical experience of applied machine learning workflow, but more importantly the architectural sensibility to conceptualize, articulate and implement their design applications in relation to these state-of-the-art Artificial Intelligence (AI) tools. Students are expected to work in small groups, curating and preparing the dataset; selecting and training the machine learning model; and finally generating designs from the learnt data distribution. The deliverables are in the forms of a design prototype and a written report, which could be used for future exhibition and publications.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.317",
+    "title": "Augmented Design",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Augmented Reality has crossed a significant threshold in its development with the recent introduction of hardware and programming kits such as the HoloLens and ARCore/ARKit respectively. It is now more accessible to end-users who may wish to adopt this technology for their specific domain purposes. The moment is ripe for architects, who comprise one such group of end-users, to explore the potentials of AR and critically evaluate where it can be used to enhance established workflows.\nIf AR does indeed have the potential to disrupt how architecture is currently conceived, represented and materialized, then it would be critical to expose students to such technology. This elective course will furnish students with conceptual and technical knowledge, enabling them to explore how AR can be utilized at various stages of the design to production process. Furthermore, it will build upon topics introduced earlier in the core syllabus relating to computation and fabrication.\nThe objective of this course is to ensure students become adroit users of AR, as well as to contribute and possibly shape the nascent discourse around this technology in the architectural domain.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.316",
+    "title": "Digital Biomimetics: Sustainable Materials and Manufacturing",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course is a cross-disciplinary collaboration between Architecture and Sustainable Design and Engineering Product Development. It brings together material science and digital fabrication, fusing natural composites with industrial robotics, aiming to produce innovation in the realm of sustainable design and manufacturing. It suggests that designs inspired by biological processes found in nature, may assist in transforming society toward a more environmentally benign mode of production from the ground up. This process starts from the understanding of the principles behind structural biological systems and the development of tools embracing the paradigm imposed by nature instead of those predefined by the existing manufacturing technologies. As a research and design course, students are required to develop their own proposals, methods and artifact which may lead to publication of results in journals and conferences.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.314",
+    "title": "Paradigms of Adaptation",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This seminar focuses of the paradigms of adaptation in the field of architecture and urbanism today. The course will introduce to students the various scales and challenges in adaptation from visionary proposals to actual built projects. Through a series of comparative case studies in Singapore and overseas, the course will equip students with a critical overview of the challenges and opportunities of adaptation within our built environment.\nGiven the lack of a unified theory of adaptation, the seminar group will embark on a journey, attempting to formulate a theory or a position towards adaptation through architectural typologies and the prevailing socio-economic paradigm, which include: culture, informal, shrinking, landscape, resilience, etc.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.313",
+    "title": "Advanced Topics in Performative Design: Urban Sustainability",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This seminar course teaches methods for the design and analysis of sustainable urban neighbourhoods and cities.subtopics within this field that students will learn about include: walkability, outdoor thermal comfort, urban daylight potenital, neighbourhood and building energy utilization, embodied energy, photovoltaic energy potential, and cogeneration systems. Large teams of 5-6 students will work in a role mimicking that of designers and consultants where they must work together to bring their own specialised interests together in the design of a sustainable neighbourhood. The course will be evaluated based upon 5 combined laboratory and homework exercises, a case-study analysis, and the completion of a final design project.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.312",
+    "title": "Social Architecture: Theory and Practice",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course aims to equip the students with theoretical/historical knowledge of \u2018Social Architecture\u2019 as well as practical skills for practicing it. Students will be exposed to key concepts, methods and goals developed in social architecture, an umbrella term that includes community architecture and planning, community design, social design, democratic design, community development, etc. which share a common approach of environmental design that encourages social behaviors leading towards certain public benefits, such as livability, safety, and sustainability. Through case studies, fieldworks and hands-on workshops, students will learn the various design processes that often involve the members of community, and how these strategies could be applied in their own design projects. The first half of the course will introduce students to theories and methods; while the second half will explore various topics under which social architecture is currently being practiced.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.307",
+    "title": "Toward Carbon-Neutral Architecture and Urban Design",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The course is intended to give students enrolled a working understanding of how to design, construct, and operate sustainable architecture and urban design developments and projects toward achieving carbon neutral on all aspects. Students will develop an understanding of a building\u2019s relationship to its site\u2019s natural systems; the building enclosure\u2019s ability to mitigate outdoor conditions; passive systems for conditioning and lighting; mechanical heating, cooling and ventilation strategies; lighting and daylighting opportunities; site and building water cycles; and health and well-being, and advanced building and environmental system simulation through a series of lectures and workshops.\nCase studies will be introduced based on the lecture themes. Topics are discussed based on the physical laws that govern the exchange of energy between building and environment and how they relate to human comfort. The ability and confidence in making both quantitative and qualitative statements about building performance will help students in integrating these considerations into their future architecture and urban design work. Ultimately students will be able to understand the impact of their design decisions on building performance in order to mitigate the carbon footprint.\nWorkshops throughout the semester will be a series of design exercise and environmental design studies as well as calculations, which will serve as supporting documents for the final carbon-neutral project at the end of the semester.\nPre-requisite: 20.203 Architectural Energy Systems\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.305",
+    "title": "Conservation Theories and Approaches of Built Heritage",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This course will acquaint participants with the discipline of architectural conservation, its origins, developments and inherent contradictions. The course will cover the range of scales of conservation,from the smallest denominator of artifact conservation to large-scale urban conservation. Students will be better positioned to appreciate and approach the question of conservation/preservation versus development/demolition and better prepared to understand the process, techniques, standards, and other considerations that define a high quality conservation effort upon the completion of the course. Case-studies in Singapore and the region will be introduced.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.304",
+    "title": "Urban Housing Typologies",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "The \u2018Urban Housing Typology\u2019 seminar will discuss the complex nature of urban contexts as places to formulate human habitation. Investigating the interdependencies evolving between a building\u2019s entity and its urban territory students will speculate how strategies for urban building types have contributed in the past and can contribute in the future to urban development.\nParticipants will understand the relevance of housing typology research and the potentials of designer\u2019s repositories of known housing precedents as design expertise. Having gained a clear understanding of concepts like \u2018type\u2019 and \u2018typology\u2019 students will analyze both contemporary and historical housing precedents of building types like Block Enclosure, Urban Infill, Solitaire, Superblock, Apartment Tower, Residential Estate and Urban Row Houses. With these building types as typically evolving within and due to specific contextual conditions the investigations will make essential connections to a building\u2019s territory, its urban type, its historical and economical context, its density and programs.\nBeyond discussing precedents as a typological knowledge on merely immutable built physical forms the course will also investigate the potential of operational building strategies like incrementalism, usage flexibility and neutrality, and user participation for sustainable urban communities. Both autochthonous building types and contemporary precedents with a particular focus on sustainable building performance will be another focus.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.302",
+    "title": "Advanced Topics in Performative Design: Daylight and Electric Lighting",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "This seminar course teaches natural and electric lighting in an architectural context. Students will learn the scientific basis of light and visual perception in order to apply them to the design of two course projects: the design and construction of an electric light fixture (luminaire) and the comprehensive lighting design of a large communal gathering space with integrated electric and daylight systems. Individual activities and lectures focus on lighting measures and metrics, calibrated high dynamic range photography, daylight simulations, material properties, visual comfort / perception, electric lighting design, lighting energy consumption, scale model building and human behavior.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.301",
+    "title": "Material Computation: Advanced Topics in Geometry and Matter",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Students enrolled will gain insight into synthetic design processes and build up on the foundational skills taught in ASD core subjects including, computational geometry, computational structural analysis, experimental optimization, and digital fabrication. Students will be expected to complete a design project and a design report which demonstrates their understanding of the relationship between geometry and matter and their ability to creatively interpret analytical information.\n",
+    "total_slots": 50,
+    "available_slots": 50
+  },
+  {
+    "subject_code": "20.223",
+    "title": "Contemporary Architecture: Between Technology, Science and Culture (HTC Elective)",
+    "type": "ASD",
+    "instructor_first_name": "",
+    "instructor_last_name": "",
+    "description": "Far from isolated trajectories, new ideas, scientific discoveries, technology innovation, and aesthetic avant-gardes occur in a highly interconnected manner. Complex dynamics between architectural designs and their cultural and technological contexts attest that architecture is not fully autonomous as it serves, negates, distorts, questions and produces its context. The course analyzes the development of contemporary architecture through its relationships with technological and scientific advances. The course is roughly organized in a chronological format, starting with a brief overview of the industrial revolution and the early 20th century, placing emphasis on the second half of the 20th century and the development of current digital culture in architecture.\nStudents develop an understanding of the relationships between architectural design, technology innovation and scientific ideas that led to contemporary architectural practice and theory. In this course, architectural design is placed into a broader intellectual context, which helps students not only understand the \u201cwhat and how\u201d architects do but also build perspective and framework to reflect on the \u201cwhys\u201d.\n",
+    "total_slots": 50,
+    "available_slots": 50
   }
 ]
