@@ -154,3 +154,157 @@ export const sendRequest = functions.https.onRequest(
     });
   }
 );
+
+const retrieveTrades = async (
+  db: FirebaseFirestore.CollectionReference
+): Promise<any[]> => {
+  const usersSnapshot = await db.where("autoTradeModules", "!=", null).get();
+  const users: any[] = [];
+  usersSnapshot.forEach((u) => {
+    const data = u.data();
+    const curHASSModule = data.modules.find((m: any) => m.slice(0, 2) === "02");
+    const autoTradeModules = data.autoTradeModules;
+    const id = data.uid;
+    users.push({ curHASSModule, autoTradeModules, id });
+  });
+  return users;
+};
+
+const retrieveModules = async (
+  db: FirebaseFirestore.CollectionReference
+): Promise<any[]> => {
+  const modulesSnapshot = await db.where("type", "==", "HASS").get();
+  const modules: any[] = [];
+  modulesSnapshot.forEach((m) => {
+    const data = m.data();
+    modules.push({ courseCode: data.courseCode });
+  });
+  return modules;
+};
+
+const initialiseArrays = (current: any, modules: any[]) => {
+  for (let m of modules as any) {
+    current[m.courseCode] = [];
+  }
+};
+
+const populateArrays = (current: any, users: any[]) => {
+  for (let u of users) {
+    if (u.curHASSModule) current[u.curHASSModule].push(u);
+  }
+};
+
+// const sortRequests = (requested: any) => {
+//   for (let mCode of Object.keys(requested)) {
+//     requested[mCode] = requested[mCode].sort((a: any, b: any) => {
+//       return b.weightage - a.weightage;
+//     });
+//   }
+// };
+
+const shuffleUsers = (users: any[]) => {
+  for (let i = users.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [users[i], users[j]] = [users[j], users[i]];
+  }
+};
+
+const executeAlgorithm = (users: any[], current: any, swaps: any[]) => {
+  // make a copy of users so that we can modify the original array while looping through all users
+  const tempUsers = [...users];
+
+  // loop through all users
+  for (let i = 0; i < tempUsers.length; i++) {
+    const u = tempUsers[i];
+
+    // check if user has already traded but has not been removed from list of users
+    // skip this iteration if user has already traded
+    if (!users.includes(u)) {
+      console.log(`${u.id} has already traded.\n`);
+      continue;
+    }
+
+    // sort current user's desired modules according to weightage
+    u.autoTradeModules = u.autoTradeModules.sort((a: any, b: any) => {
+      return b.weightage - a.weightage;
+    });
+
+    // record all potential swaps
+    let potentialSwaps: any[] = [];
+
+    // iterate through all desired modules of current user
+    for (let m of u.autoTradeModules) {
+      // iterate through all users who currently have these desired modules
+      for (let j = 0; j < current[m.courseCode].length; j++) {
+        const u2 = current[m.courseCode][j];
+
+        // current array is intentionally not updated when users are identified for trades to save on computation time
+        // check whether potential swapee is already involved in a trade
+
+        // potential swapee has already traded -- remove user from current array
+        if (!users.includes(u2)) {
+          current[m.courseCode].splice(j, 1);
+        }
+        // potential swapee can still trade
+        else {
+          // check whether potential swapee also wants current user's module
+          const swappableModule = u2.autoTradeModules.find(
+            (m2: any) => m2.courseCode == u.curHASSModule
+          );
+          // both parties want each others' modules -- add potentialSwapee to potentialSwaps array
+          if (swappableModule)
+            potentialSwaps.push({ ...swappableModule, id: u2.id });
+        }
+      }
+    }
+
+    // check to make sure the chosen user(s) in potentialSwaps have not traded yet
+    // since potentialSwaps is ordered such that first choice for swapee is at index 0
+    // we slice potentialSwaps to remove the first element if the first choice has already traded
+    // repeat until possible swapee is found or no potentialSwaps are left
+    while (
+      potentialSwaps.length > 0 &&
+      !users.find((searchUser) => searchUser.id == potentialSwaps[0].id)
+    ) {
+      potentialSwaps = potentialSwaps.slice(1);
+    }
+
+    // potential swapee found -- add entry to swaps array and remove both users from users array
+    if (potentialSwaps.length > 0) {
+      swaps.push([u.id, potentialSwaps[0].id]);
+      const studentOneIndex = users.findIndex(
+        (searchUser: any) => searchUser.id == u.id
+      );
+      const studentTwoIndex = users.findIndex(
+        (searchUser: any) => searchUser.id == potentialSwaps[0].id
+      );
+      users.splice(studentOneIndex, 1);
+      users.splice(studentTwoIndex, 1);
+    }
+  }
+};
+
+export const autoTrade = functions.https.onRequest(
+  async (req: functions.Request, res: functions.Response) => {
+    const userDb = admin.firestore().collection("users");
+    const moduleDb = admin.firestore().collection("modules");
+    const users: any[] = await retrieveTrades(userDb);
+    const modules: any[] = await retrieveModules(moduleDb);
+
+    // const requested: any = new Object();
+    const current: any = new Object();
+    const swaps: any[] = [];
+
+    initialiseArrays(current, modules);
+    populateArrays(current, users);
+    // sortRequests(requested);
+    shuffleUsers(users);
+
+    console.log(current);
+    console.log(users);
+
+    executeAlgorithm(users, current, swaps);
+    console.log(swaps);
+    res.json("done");
+  }
+);
