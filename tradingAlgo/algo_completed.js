@@ -1,7 +1,3 @@
-// FULL OF BUGS LOL PLS DONT DEPLOY YET
-// IM GONNA REWRITE
-// -XINYI
-
 class Student {
   // student_id: String;
   // cur_mod: Module;

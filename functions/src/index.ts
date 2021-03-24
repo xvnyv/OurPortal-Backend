@@ -155,6 +155,21 @@ export const sendRequest = functions.https.onRequest(
   }
 );
 
+export interface User {
+  id: string;
+  curHASSModule: string;
+  autoTradeModules: AutoTradeModule[];
+}
+
+export interface AutoTradeModule {
+  weightage: number;
+  courseCode: string;
+}
+
+export interface ModuleUserMap {
+  [key: string]: User[];
+}
+
 const retrieveTrades = async (
   db: FirebaseFirestore.CollectionReference
 ): Promise<any[]> => {
@@ -165,7 +180,9 @@ const retrieveTrades = async (
     const curHASSModule = data.modules.find((m: any) => m.slice(0, 2) === "02");
     const autoTradeModules = data.autoTradeModules;
     const id = data.uid;
-    users.push({ curHASSModule, autoTradeModules, id });
+    if (autoTradeModules && autoTradeModules.length && curHASSModule) {
+      users.push({ curHASSModule, autoTradeModules, id });
+    }
   });
   return users;
 };
@@ -177,39 +194,35 @@ const retrieveModules = async (
   const modules: any[] = [];
   modulesSnapshot.forEach((m) => {
     const data = m.data();
-    modules.push({ courseCode: data.courseCode });
+    modules.push(data.courseCode);
   });
   return modules;
 };
 
-const initialiseArrays = (current: any, modules: any[]) => {
+const initialiseArrays = (current: ModuleUserMap, modules: string[]) => {
   for (let m of modules as any) {
-    current[m.courseCode] = [];
+    current[m] = [];
   }
 };
 
-const populateArrays = (current: any, users: any[]) => {
+const populateArrays = (current: ModuleUserMap, users: User[]) => {
   for (let u of users) {
     if (u.curHASSModule) current[u.curHASSModule].push(u);
   }
 };
 
-// const sortRequests = (requested: any) => {
-//   for (let mCode of Object.keys(requested)) {
-//     requested[mCode] = requested[mCode].sort((a: any, b: any) => {
-//       return b.weightage - a.weightage;
-//     });
-//   }
-// };
-
-const shuffleUsers = (users: any[]) => {
+const shuffleUsers = (users: User[]) => {
   for (let i = users.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [users[i], users[j]] = [users[j], users[i]];
   }
 };
 
-const executeAlgorithm = (users: any[], current: any, swaps: any[]) => {
+const executeAlgorithm = (
+  users: User[],
+  current: ModuleUserMap,
+  swaps: User[][]
+) => {
   // make a copy of users so that we can modify the original array while looping through all users
   const tempUsers = [...users];
 
@@ -230,7 +243,7 @@ const executeAlgorithm = (users: any[], current: any, swaps: any[]) => {
     });
 
     // record all potential swaps
-    let potentialSwaps: any[] = [];
+    let potentialSwaps: User[] = [];
 
     // iterate through all desired modules of current user
     for (let m of u.autoTradeModules) {
@@ -252,8 +265,7 @@ const executeAlgorithm = (users: any[], current: any, swaps: any[]) => {
             (m2: any) => m2.courseCode == u.curHASSModule
           );
           // both parties want each others' modules -- add potentialSwapee to potentialSwaps array
-          if (swappableModule)
-            potentialSwaps.push({ ...swappableModule, id: u2.id });
+          if (swappableModule) potentialSwaps.push(u2);
         }
       }
     }
@@ -271,14 +283,14 @@ const executeAlgorithm = (users: any[], current: any, swaps: any[]) => {
 
     // potential swapee found -- add entry to swaps array and remove both users from users array
     if (potentialSwaps.length > 0) {
-      swaps.push([u.id, potentialSwaps[0].id]);
+      swaps.push([u, potentialSwaps[0]]);
       const studentOneIndex = users.findIndex(
         (searchUser: any) => searchUser.id == u.id
       );
+      users.splice(studentOneIndex, 1);
       const studentTwoIndex = users.findIndex(
         (searchUser: any) => searchUser.id == potentialSwaps[0].id
       );
-      users.splice(studentOneIndex, 1);
       users.splice(studentTwoIndex, 1);
     }
   }
@@ -288,16 +300,14 @@ export const autoTrade = functions.https.onRequest(
   async (req: functions.Request, res: functions.Response) => {
     const userDb = admin.firestore().collection("users");
     const moduleDb = admin.firestore().collection("modules");
-    const users: any[] = await retrieveTrades(userDb);
-    const modules: any[] = await retrieveModules(moduleDb);
+    const users: User[] = await retrieveTrades(userDb);
+    const modules: string[] = await retrieveModules(moduleDb);
 
-    // const requested: any = new Object();
-    const current: any = new Object();
-    const swaps: any[] = [];
+    const current: ModuleUserMap = {};
+    const swaps: User[][] = [];
 
     initialiseArrays(current, modules);
     populateArrays(current, users);
-    // sortRequests(requested);
     shuffleUsers(users);
 
     console.log(current);
@@ -308,3 +318,13 @@ export const autoTrade = functions.https.onRequest(
     res.json("done");
   }
 );
+
+// FOR TESTING SUBFUNCTIONS
+export const subfunctions = {
+  retrieveTrades,
+  retrieveModules,
+  initialiseArrays,
+  populateArrays,
+  shuffleUsers,
+  executeAlgorithm,
+};
