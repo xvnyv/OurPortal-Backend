@@ -64,6 +64,11 @@ const getTransporter = () => {
   return transporter;
 };
 
+const validateEmail = (email: string) => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
 /*
  * Request Parameters
  * @param {string} senderID - UID of requester
@@ -95,7 +100,7 @@ export const sendRequest = functions.https.onRequest(
 
       // check validity of IDs
       if (
-        //!/100\d{4}/gm.test(receiverEID) || //update this test to use email format
+        !validateEmail(receiverEID) ||
         receiverEID == "" ||
         receiverEID == null ||
         senderID == "" ||
