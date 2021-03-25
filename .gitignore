@@ -8,3 +8,5 @@ functions/firebase-debug.log
 functions/ui-debug.log
 firestore-debug.log
 ui-debug.log
+
+brute*force*test/dictionary/
