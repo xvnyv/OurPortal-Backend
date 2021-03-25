@@ -5,10 +5,11 @@ import {
   User,
   // AutoTradeModule,
   // ModuleUserMap,
-  subfunctions,
   ModuleUserMap,
   // autoTrade,
-} from "../index";
+} from "../autoTrade/interfaces";
+
+import * as subfunctions from "../autoTrade/helper";
 
 if (!admin.apps.length) {
   admin.initializeApp();
