@@ -1,0 +1,13 @@
+[debug] [2021-03-25T10:38:48.894Z] ----------------------------------------------------------------------
+[debug] [2021-03-25T10:38:48.896Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\barce\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions:sendRequest
+[debug] [2021-03-25T10:38:48.896Z] CLI Version:   9.6.0
+[debug] [2021-03-25T10:38:48.896Z] Platform:      win32
+[debug] [2021-03-25T10:38:48.896Z] Node Version:  v14.16.0
+[debug] [2021-03-25T10:38:48.897Z] Time:          Thu Mar 25 2021 18:38:48 GMT+0800 (Singapore Standard Time)
+[debug] [2021-03-25T10:38:48.897Z] ----------------------------------------------------------------------
+[debug] [2021-03-25T10:38:48.897Z] 
+[debug] [2021-03-25T10:38:48.902Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-25T10:38:48.903Z] > authorizing via signed-in user
+[debug] [2021-03-25T10:38:48.903Z] [iam] checking project ourportal-e0a9c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-03-25T10:38:48.904Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ourportal-e0a9c:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}

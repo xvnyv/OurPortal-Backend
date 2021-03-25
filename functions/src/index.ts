@@ -380,6 +380,8 @@ const sendEmail = (
       {}
     );
 
+    var transporter = getTransporter();
+
     console.log(flattenedSwaps);
 
     for (let u of users) {
