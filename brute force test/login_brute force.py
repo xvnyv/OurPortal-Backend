@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import itertools
+import time
 
 def every_combination(n):
     generator=itertools.combinations_with_replacement('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~', n )
@@ -16,14 +17,18 @@ chrome_driver=r"C:\Users\x1301\Desktop\chromedriver.exe"
 driver=webdriver.Chrome(chrome_driver,chrome_options=options)
 
 password_list=every_combination(n)
-driver.get("http://localhost:9998")
-username=driver.find_element_by_id("username")
+driver.get("https://ourportal.shohamc1.com/")
+login_botton=driver.find_element_by_link_text("Login").click()
+time.sleep(1)
+
+username=driver.find_element_by_css_selector("[type='email']")
 username.send_keys(username_str)
 #n invalid ones
 for each in password_list:
-    password=driver.find_element_by_id("password")
+    password=driver.find_element_by_css_selector("[type='password']")
+    password.clear()
     password.send_keys(each)
-    driver.find_element_by_class_name("submit").click()
+    driver.find_element_by_css_selector("button").click()
     try:
         assert "menu-log-out" in driver.page_source
         print("Test failed, find password {} for the given username".format(each))

