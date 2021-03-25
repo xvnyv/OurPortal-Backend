@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
-import * as modules from "./data/modules";
-import * as users from "./data/users";
+import { modules } from "./data/modules";
+import { users } from "./data/users";
 import {
   User,
   // AutoTradeModule,

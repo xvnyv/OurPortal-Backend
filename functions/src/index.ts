@@ -393,22 +393,22 @@ const sendEmail = (
 
       console.log(u.email);
       console.log(message);
-      // let mailOptions = {
-      //   from: "sutd-ourportal@outlook.com",
-      //   to: u.email,
-      //   subject: "Automated HASS Trading Results",
-      //   text: `Hello there,\n\n${message}\n\nFrom your friends at OurPortal`,
-      // };
+      let mailOptions = {
+        from: "sutd-ourportal@outlook.com",
+        to: u.email,
+        subject: "Automated HASS Trading Results",
+        text: `Hello there,\n\n${message}\n\nFrom your friends at OurPortal`,
+      };
 
-      // transporter.sendMail(mailOptions, (err: any, data: any) => {
-      //   if (err) {
-      //     functions.logger.error(err);
-      //   } else {
-      //     functions.logger.info(`Sent AutoTrade results to ${u.id}`);
-      //     res.sendStatus(200);
-      //   }
-      // });
-      // await new Promise((r) => setTimeout(r, 1000));
+      transporter.sendMail(mailOptions, (err: any, data: any) => {
+        if (err) {
+          functions.logger.error(err);
+        } else {
+          functions.logger.info(`Sent AutoTrade results to ${u.id}`);
+          res.sendStatus(200);
+        }
+      });
+      await new Promise((r) => setTimeout(r, 1000));
     }
   });
 };
