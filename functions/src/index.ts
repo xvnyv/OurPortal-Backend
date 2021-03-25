@@ -371,8 +371,6 @@ const sendEmail = (
   users: User[]
 ) => {
   cors(req, res, async () => {
-    var transporter = getTransporter();
-
     const flattenedSwaps: any = swaps.reduce(
       (accumulator: any, currentValue: User[]) => {
         accumulator[currentValue[0].id] = currentValue[1].curHASSModule;
