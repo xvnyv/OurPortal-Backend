@@ -1,4 +1,4 @@
-module.exports = [
+export const modules: any[] = [
   {
     description:
       "This course is not offered in 2020.\nGlobal Health Technologies course provides a multi-disciplinary approach to global health technology design using real world projects and partners. The course explores the current state of global health challenges (with special focus on Singapore and her neighbours), and teaches students how to design medical technologies (e.g. products, systems) that address these problems. The same technology that is applicable in developing countries will be tested in Singapore as a pilot run, before being introduced to the neighboring countries. In their respective project groups, students will brainstorm and define current elderly issues pertaining to community hospitals (e.g. St Andrew’s Community Hospital) in Singapore. Guest lectures, panel discussions and organized field trip will allow student to have a first-hand experience to global health issues and help students come up with better solutions. The Biodesign Innovation process will be taught and applied in the student projects.",

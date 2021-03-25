@@ -1,4 +1,4 @@
-module.exports = [
+export const users: any[] = [
   {
     autoTradeModules: [
       { courseCode: "02.219TS", weightage: 80 },
