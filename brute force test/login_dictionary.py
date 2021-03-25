@@ -38,7 +38,7 @@ for line in f.readlines():
     driver.find_element_by_class_name("submit").click()
     try:
         assert "menu-log-out" in driver.page_source
-        print("Test failed, find password {} for the given username".format(each))
+        print("Test failed, find password {} for the given username".format(line))
         break
     except:
         continue
