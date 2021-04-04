@@ -7,4 +7,10 @@ functions/firestore-debug.log
 functions/firebase-debug.log
 functions/ui-debug.log
 firestore-debug.log
+<<<<<<< HEAD
 ui-debug.log
+=======
+ui-debug.log
+
+brute*force*test/dictionary/
+>>>>>>> 96daf63fecf6cbb3d6a722f4da7353af51ea18aa

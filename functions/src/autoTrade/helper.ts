@@ -1,8 +1,9 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
+var blossom = require("edmonds-blossom");
 var cors = require("cors")({ origin: true });
 
-import { User, ModuleUserMap } from "./interfaces";
+import { User } from "./interfaces";
 import { getTransporter } from "../helper";
 
 /* Query User collection on Firestore and retrieves only users who:
@@ -33,141 +34,12 @@ const retrieveTrades = async (
   return users;
 };
 
-/* Query Modules collection on Firestore and retrieve all HASS modules.
-  
-  Returns array of module course codes. */
-
-const retrieveModules = async (
-  db: FirebaseFirestore.CollectionReference
-): Promise<any[]> => {
-  const modulesSnapshot = await db.where("type", "==", "HASS").get();
-  const modules: any[] = [];
-  modulesSnapshot.forEach((m) => {
-    const data = m.data();
-    modules.push(data.courseCode);
-  });
-  return modules;
-};
-
-/* Modifies current such that current will contain all HASS course codes as keys and empty arrays as values.
-  
-  Does not return anything as current is modified directly through argument. */
-
-const initialiseArrays = (current: ModuleUserMap, modules: string[]) => {
-  for (let m of modules as any) {
-    current[m] = [];
-  }
-};
-
-/* Populates current such that current["course1"] contains 
-  an array of all users currently enrolled in module with course code "course1" */
-
-const populateArrays = (current: ModuleUserMap, users: User[]) => {
-  for (let u of users) {
-    if (u.curHASSModule) current[u.curHASSModule].push(u);
-  }
-};
-
 /* Randomly shuffles an array of User objects */
 
 const shuffleUsers = (users: User[]) => {
   for (let i = users.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [users[i], users[j]] = [users[j], users[i]];
-  }
-};
-
-/* Executes trading algorithm 
-  
-  Algorithm works by:
-  1. Looping through the randomly shuffled array of users (u1)
-    2. If u1 has not traded yet, loop through all 1-3 modules that user has selected for autotrade
-      3. Loop through all users who are currently enrolled in the current selected module (u2)
-      4. Check if u2 has selected u1's current HASS module for autotrading
-      5a. Yes: if u2 has not already traded, add u2 as a potential swap
-      5b. No: skip and carry on 
-    6. Once all swaps for u1 have been found, check that chosen swap has not traded yet 
-    7. If already traded, move on to next potential swap 
-    8a. If no more potential swaps remaining, u1 cannot trade
-    8b. Else, u1 has a swap saved in the swaps array
-    
-    Output swap array contains swaps represented as arrays containing 2 User objects */
-
-const executeAlgorithm = (
-  users: User[],
-  current: ModuleUserMap,
-  swaps: User[][]
-) => {
-  // make a copy of users so that we can modify the original array while looping through all users
-  const tempUsers = [...users];
-
-  // loop through all users
-  for (let i = 0; i < users.length; i++) {
-    const u = users[i];
-
-    // check if user has already traded but has not been removed from list of users
-    // skip this iteration if user has already traded
-    if (!tempUsers.includes(u)) {
-      // console.log(`${u.id} has already traded.\n`);
-      continue;
-    }
-
-    // sort current user's desired modules according to weightage
-    u.autoTradeModules = u.autoTradeModules.sort((a: any, b: any) => {
-      return b.weightage - a.weightage;
-    });
-
-    // record all potential swaps
-    let potentialSwaps: User[] = [];
-
-    // iterate through all desired modules of current user
-    for (let m of u.autoTradeModules) {
-      // iterate through all users who currently have these desired modules
-      for (let j = 0; j < current[m.courseCode].length; j++) {
-        const u2 = current[m.courseCode][j];
-
-        // current array is intentionally not updated when users are identified for trades to save on computation time
-        // check whether potential swapee is already involved in a trade
-
-        // potential swapee has already traded -- remove user from current array
-        if (!tempUsers.includes(u2)) {
-          current[m.courseCode].splice(j, 1);
-        }
-        // potential swapee can still trade
-        else if (u2 !== u) {
-          // check whether potential swapee also wants current user's module
-          const swappableModule = u2.autoTradeModules.find(
-            (m2: any) => m2.courseCode == u.curHASSModule
-          );
-          // both parties want each others' modules -- add potentialSwapee to potentialSwaps array
-          if (swappableModule) potentialSwaps.push(u2);
-        }
-      }
-    }
-
-    // check to make sure the chosen user(s) in potentialSwaps have not traded yet
-    // since potentialSwaps is ordered such that first choice for swapee is at index 0
-    // we slice potentialSwaps to remove the first element if the first choice has already traded
-    // repeat until possible swapee is found or no potentialSwaps are left
-    while (
-      potentialSwaps.length > 0 &&
-      !tempUsers.find((searchUser) => searchUser.id == potentialSwaps[0].id)
-    ) {
-      potentialSwaps = potentialSwaps.slice(1);
-    }
-
-    // potential swapee found -- add entry to swaps array and remove both users from users array
-    if (potentialSwaps.length > 0) {
-      swaps.push([u, potentialSwaps[0]]);
-      const studentOneIndex = tempUsers.findIndex(
-        (searchUser: any) => searchUser.id == u.id
-      );
-      tempUsers.splice(studentOneIndex, 1);
-      const studentTwoIndex = tempUsers.findIndex(
-        (searchUser: any) => searchUser.id == potentialSwaps[0].id
-      );
-      tempUsers.splice(studentTwoIndex, 1);
-    }
   }
 };
 
@@ -249,13 +121,59 @@ const sendEmail = (
   });
 };
 
-export {
-  retrieveTrades,
-  retrieveModules,
-  initialiseArrays,
-  populateArrays,
-  shuffleUsers,
-  executeAlgorithm,
-  updateFirestore,
-  sendEmail,
+const useBlossom = (users: User[]) => {
+  const graph = [];
+
+  for (let i = 0; i < users.length; i++) {
+    let u = users[i];
+
+    for (let j = i + 1; j < users.length; j++) {
+      let u2 = users[j];
+      const uWantsu2 = u.autoTradeModules.find(
+        (m) => m.courseCode == u2.curHASSModule
+      );
+      const u2WantsU = u2.autoTradeModules.find(
+        (m) => m.courseCode == u.curHASSModule
+      );
+      if (uWantsu2 && u2WantsU) {
+        const totalWeightage = uWantsu2.weightage + u2WantsU.weightage;
+        graph.push([i, j, totalWeightage == 0 ? 0.1 : totalWeightage]);
+      }
+    }
+  }
+
+  // console.log("GRAPH STARTS");
+  // graph.forEach((e) => {
+  //   console.log(e);
+  // });
+  // console.log("GRAPH ENDS");
+
+  const trades = [];
+  const completed = new Array(users.length);
+  const optimisedResults = blossom(graph);
+  // console.log(optimisedResults);
+
+  for (let i = 0; i < completed.length; i++) {
+    completed[i] = false;
+  }
+
+  for (let i = 0; i < optimisedResults.length; i++) {
+    if (
+      optimisedResults[i] != -1 &&
+      !completed[i] &&
+      !completed[optimisedResults[i]]
+    ) {
+      const u1 = users[i];
+      const u2 = users[optimisedResults[i]];
+
+      completed[i] = true;
+      completed[optimisedResults[i]] = true;
+
+      trades.push([u1, u2]);
+    }
+  }
+
+  return trades;
 };
+
+export { retrieveTrades, shuffleUsers, updateFirestore, sendEmail, useBlossom };

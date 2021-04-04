@@ -1,13 +1,7 @@
 import * as admin from "firebase-admin";
 import { modules } from "./data/modules";
 import { users } from "./data/users";
-import {
-  User,
-  // AutoTradeModule,
-  // ModuleUserMap,
-  ModuleUserMap,
-  // autoTrade,
-} from "../autoTrade/interfaces";
+import { User, ModuleUserMap } from "../autoTrade/interfaces";
 
 import * as subfunctions from "../autoTrade/helper";
 
@@ -15,10 +9,22 @@ if (!admin.apps.length) {
   admin.initializeApp();
 }
 let db = admin.firestore();
-// db.settings({
-//   host: "localhost:8080",
-//   ssl: false,
-// });
+db.settings({
+  host: "localhost:8080",
+  ssl: false,
+});
+
+/* HELPER FUNCTIONS */
+
+const swapsToString = (swaps: User[][]) => {
+  return JSON.stringify(
+    swaps.map((s) =>
+      s
+        .sort((a: User, b: User) => parseInt(a.id, 10) - parseInt(b.id, 10))
+        .map((u) => u.id)
+    )
+  );
+};
 
 /* SET UP AND TEAR DOWN */
 
@@ -44,46 +50,15 @@ afterAll(async () => {
   const batch = db.batch();
   const modulesCol = db.collection("modules");
   const usersCol = db.collection("users");
-
   for (let m of modules) {
     const docRef = modulesCol.doc(m.courseCode);
     batch.delete(docRef);
   }
-
   for (let u of users) {
     const docRef = usersCol.doc(u.uid);
     batch.delete(docRef);
   }
-
   await batch.commit();
-});
-
-/* TESTING retrieveModules */
-
-test("retrieveModules: return an array of course codes", async () => {
-  expect.assertions(1);
-  const modules = await subfunctions.retrieveModules(db.collection("modules"));
-  let allString = true;
-  for (let m of modules) {
-    if (m instanceof String) {
-      allString = false;
-      break;
-    }
-  }
-  expect(allString).toBe(true);
-});
-
-test("retrieveModules: only returns HASS modules", async () => {
-  expect.assertions(1);
-  const modules = await subfunctions.retrieveModules(db.collection("modules"));
-  let allHASS = true;
-  for (let m of modules) {
-    if (m.slice(0, 2) !== "02") {
-      allHASS = false;
-      break;
-    }
-  }
-  expect(allHASS).toBe(true);
 });
 
 /* TESTING retrieveTrades */
@@ -113,85 +88,6 @@ test("retrieveTrade: only return users who currently have a HASS module", async 
     }
   }
   expect(haveHASSModule).toBe(true);
-});
-
-/* TESTING initialiseArrays */
-
-test("initialiseArrays: current is initialised with every HASS module course code as keys", () => {
-  let allHASSModules: string[] = modules.reduce(
-    (accumulator: any[], m: any) => {
-      if (m.type === "HASS") accumulator.push(m.courseCode);
-      return accumulator;
-    },
-    []
-  );
-
-  const current = {};
-  subfunctions.initialiseArrays(current, allHASSModules);
-
-  let hasAllCourseCodesAsKey = true;
-  for (let m of allHASSModules) {
-    if (!current.hasOwnProperty(m)) {
-      console.log(m);
-      hasAllCourseCodesAsKey = false;
-      break;
-    }
-  }
-  expect(hasAllCourseCodesAsKey).toBe(true);
-});
-
-/* TESTING populateArrays */
-
-test("populateArrays: correctly populate current with User objects", () => {
-  const testData: User[] = [
-    {
-      id: "1",
-      curHASSModule: "02.211",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.144DH", weightage: 80 },
-        { courseCode: "02.136DH", weightage: 20 },
-      ],
-      allModules: ["02.211", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "2",
-      curHASSModule: "02.231TS",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.211", weightage: 80 },
-        { courseCode: "02.136DH", weightage: 10 },
-        { courseCode: "02.202", weightage: 10 },
-      ],
-      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "3",
-      curHASSModule: "02.136DH",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.144DH", weightage: 70 },
-        { courseCode: "02.211", weightage: 30 },
-      ],
-      allModules: ["02.136DH", "50.001", "50.002", "50.004"],
-    },
-  ];
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  subfunctions.populateArrays(current, testData);
-  const expected: ModuleUserMap = {};
-  modules.forEach((m: any) => {
-    const arr: User[] = [];
-    testData.forEach((u) => {
-      if (u.curHASSModule === m.courseCode) {
-        arr.push(u);
-      }
-    });
-    if (m.type === "HASS") expected[m.courseCode] = arr;
-  });
-  expect(current).toEqual(expected);
 });
 
 /* TESTING shuffleUsers */
@@ -322,9 +218,45 @@ test("updateFirestore: Firestore update was successful", async () => {
   expect(getHASSModule(user2)).toBe("02.211");
 });
 
-/* TESTING executeAlgorithm */
+/* TESTING useBlossom */
 
-test("executeAlgorithm: 2 users, no mutual swap possible", () => {
+test("useBlossom: output contains an array of arrays with 2 User objects", () => {
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.211",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.231TS", weightage: 80 },
+        { courseCode: "02.136DH", weightage: 20 },
+      ],
+      allModules: ["02.211", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "2",
+      curHASSModule: "02.231TS",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.211", weightage: 80 },
+        { courseCode: "02.136DH", weightage: 10 },
+        { courseCode: "02.202", weightage: 10 },
+      ],
+      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+
+  expect(typeof swaps[0][0].id).toBe("string");
+  expect(typeof swaps[0][1].id).toBe("string");
+  expect(swaps[0][0].autoTradeModules.length).toBeGreaterThan(0);
+  expect(swaps[0][1].autoTradeModules.length).toBeGreaterThan(0);
+  expect(typeof swaps[0][0].curHASSModule).toBe("string");
+  expect(typeof swaps[0][1].curHASSModule).toBe("string");
+  expect(swaps[0][0].allModules.length).toBeGreaterThan(0);
+  expect(swaps[0][1].allModules.length).toBeGreaterThan(0);
+});
+
+test("useBlossom: 2 users, no trade possible", () => {
   const testData: User[] = [
     {
       id: "1",
@@ -355,12 +287,11 @@ test("executeAlgorithm: 2 users, no mutual swap possible", () => {
   testData.forEach((u) => {
     current[u.curHASSModule].push(u);
   });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
   expect(swaps.length).toBe(0);
 });
 
-test("executeAlgorithm: 2 users, mutual swap possible", () => {
+test("useBlossom: 2 users, trade possible", () => {
   const testData: User[] = [
     {
       id: "1",
@@ -384,63 +315,41 @@ test("executeAlgorithm: 2 users, mutual swap possible", () => {
       allModules: ["02.231TS", "50.001", "50.002", "50.004"],
     },
   ];
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
   expect(swaps.length).toBe(1);
 });
 
-test("executeAlgorithm: output contains an array of arrays with 2 User objects", () => {
+test("useBlossom: 2 users, possible trade has total weightage 0", () => {
+  // trade between 1 and 2 has 0 weightage
   const testData: User[] = [
     {
       id: "1",
-      curHASSModule: "02.211",
+      curHASSModule: "02.202",
       email: "",
       autoTradeModules: [
-        { courseCode: "02.231TS", weightage: 80 },
-        { courseCode: "02.136DH", weightage: 20 },
+        { courseCode: "02.150HT", weightage: 0 },
+        { courseCode: "02.144DH", weightage: 90 },
+        { courseCode: "02.126", weightage: 10 },
       ],
-      allModules: ["02.211", "50.001", "50.002", "50.004"],
+      allModules: ["02.202", "50.001", "50.002", "50.004"],
     },
     {
       id: "2",
-      curHASSModule: "02.231TS",
+      curHASSModule: "02.150HT",
       email: "",
       autoTradeModules: [
-        { courseCode: "02.211", weightage: 80 },
-        { courseCode: "02.136DH", weightage: 10 },
-        { courseCode: "02.202", weightage: 10 },
+        { courseCode: "02.144DH", weightage: 70 },
+        { courseCode: "02.202", weightage: 0 },
+        { courseCode: "02.218", weightage: 30 },
       ],
-      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
+      allModules: ["02.150HT", "50.001", "50.002", "50.004"],
     },
   ];
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
-
-  expect(typeof swaps[0][0].id).toBe("string");
-  expect(typeof swaps[0][1].id).toBe("string");
-  expect(swaps[0][0].autoTradeModules.length).toBeGreaterThan(0);
-  expect(swaps[0][1].autoTradeModules.length).toBeGreaterThan(0);
-  expect(typeof swaps[0][0].curHASSModule).toBe("string");
-  expect(typeof swaps[0][1].curHASSModule).toBe("string");
-  expect(swaps[0][0].allModules.length).toBeGreaterThan(0);
-  expect(swaps[0][1].allModules.length).toBeGreaterThan(0);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toBe(JSON.stringify([["1", "2"]]));
 });
 
-test("executeAlgorithm: 3 users, mutual swap possible for 2 users", () => {
+test("useBlossom: 3 users, trade possible for 2 users", () => {
   const testData: User[] = [
     {
       id: "1",
@@ -475,21 +384,24 @@ test("executeAlgorithm: 3 users, mutual swap possible for 2 users", () => {
       allModules: ["02.150HT", "50.001", "50.002", "50.004"],
     },
   ];
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
   expect(swaps.length).toBe(1);
 });
 
-// User1, 2 and 3, 1 and 2 both want 3, 1 has higher weightage than 2, 3 wants both 1 and 2 with 1 higher weightage => 1 and 3 trade
-test("executeAlgorithm: 3 users, u1 and u2 want u3's module, u1 gave higher weightage than u2, u3 wants u1's module more than u2's", () => {
-  const testData: User[] = [
+// User1, 2 and 3, 1 and 2 both want 3, 1 has higher weightage than 2, 3 wants both 1 and 2 with 2 higher weightage, 3 gets to choose before 1 => 2 and 3 trade
+test("useBlossom: 3 users, higher weightage pair is selected regardless of sequence", () => {
+  const testData1: User[] = [
+    {
+      id: "3",
+      curHASSModule: "02.231TS",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.136DH", weightage: 80 }, // user 2's module
+        { courseCode: "02.211", weightage: 15 }, // user 1's module
+        { courseCode: "02.202", weightage: 5 },
+      ],
+      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
+    },
     {
       id: "1",
       curHASSModule: "02.211",
@@ -507,6 +419,39 @@ test("executeAlgorithm: 3 users, u1 and u2 want u3's module, u1 gave higher weig
       autoTradeModules: [
         { courseCode: "02.143DH", weightage: 80 },
         { courseCode: "02.231TS", weightage: 10 }, // user 3's module
+        { courseCode: "02.202", weightage: 10 },
+      ],
+      allModules: ["02.136DH", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const testData2: User[] = [...testData1];
+  [testData2[0], testData2[2]] = [testData2[2], testData2[0]];
+
+  const swaps1: User[][] = subfunctions.useBlossom(testData1);
+  const swaps2: User[][] = subfunctions.useBlossom(testData2);
+  expect(swapsToString(swaps1) == swapsToString(swaps2)).toEqual(true);
+});
+
+// given 2 pairs of equal weightage, the later pair to be identified will be the final pair
+test("useBlossom: 3 users, 2 possible pairs of equal weightage", () => {
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.211",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.231TS", weightage: 50 }, // user 3's module
+        { courseCode: "02.136DH", weightage: 50 }, // user 2's module
+      ],
+      allModules: ["02.211", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "2",
+      curHASSModule: "02.136DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.211", weightage: 80 }, // user 1's module
+        { courseCode: "02.143DH", weightage: 10 },
         { courseCode: "02.202", weightage: 10 },
       ],
       allModules: ["02.136DH", "50.001", "50.002", "50.004"],
@@ -517,134 +462,18 @@ test("executeAlgorithm: 3 users, u1 and u2 want u3's module, u1 gave higher weig
       email: "",
       autoTradeModules: [
         { courseCode: "02.211", weightage: 80 }, // user 1's module
-        { courseCode: "02.136DH", weightage: 10 }, // user 2's module
+        { courseCode: "02.143DH", weightage: 10 },
         { courseCode: "02.202", weightage: 10 },
       ],
       allModules: ["02.231TS", "50.001", "50.002", "50.004"],
     },
   ];
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
-  expect(
-    swaps[0]
-      .sort((a: User, b: User) => parseInt(a.id, 10) - parseInt(b.id, 10))
-      .map((u) => u.id)
-  ).toEqual(["1", "3"]);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toBe(JSON.stringify([["1", "3"]]));
 });
 
-// User1, 2 and 3, 1 and 2 both want 3, 1 has higher weightage than 2, 3 wants both 1 and 2 with 2 higher weightage, 3 gets to choose before 1 => 2 and 3 trade
-test("executeAlgorithm: 3 users, u1 and u2 want u3's module, u1 gave higher weightage than u2, u3 wants u2's module more than u1's, u3 gets to select modules before u1", () => {
-  const testData: User[] = [
-    {
-      id: "3",
-      curHASSModule: "02.231TS",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.136DH", weightage: 80 }, // user 2's module
-        { courseCode: "02.211", weightage: 10 }, // user 1's module
-        { courseCode: "02.202", weightage: 10 },
-      ],
-      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "1",
-      curHASSModule: "02.211",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.231TS", weightage: 80 }, // user 3's module
-        { courseCode: "02.143DH", weightage: 20 },
-      ],
-      allModules: ["02.211", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "2",
-      curHASSModule: "02.136DH",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.143DH", weightage: 80 },
-        { courseCode: "02.231TS", weightage: 10 }, // user 3's module
-        { courseCode: "02.202", weightage: 10 },
-      ],
-      allModules: ["02.136DH", "50.001", "50.002", "50.004"],
-    },
-  ]; // user 3 gets first pick
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
-  expect(
-    swaps[0]
-      .sort((a: User, b: User) => parseInt(a.id, 10) - parseInt(b.id, 10))
-      .map((u) => u.id)
-  ).toEqual(["2", "3"]);
-});
-
-// User1, 2 and 3, 1 and 2 both want 3, 1 has higher weightage than 2, 3 wants both 1 and 2 with 2 higher weightage, 1 gets to choose before 3 => 1 and 3 trade
-test("executeAlgorithm: 3 users, u1 and u2 want u3's module, u1 gave higher weightage than u2, u3 wants u2's module more than u1's, u1 gets to select modules before u3", () => {
-  const testData: User[] = [
-    {
-      id: "1",
-      curHASSModule: "02.211",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.231TS", weightage: 80 }, // user 3's module
-        { courseCode: "02.143DH", weightage: 20 },
-      ],
-      allModules: ["02.211", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "3",
-      curHASSModule: "02.231TS",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.136DH", weightage: 80 }, // user 2's module
-        { courseCode: "02.211", weightage: 10 }, // user 1's module
-        { courseCode: "02.202", weightage: 10 },
-      ],
-      allModules: ["02.231TS", "50.001", "50.002", "50.004"],
-    },
-    {
-      id: "2",
-      curHASSModule: "02.136DH",
-      email: "",
-      autoTradeModules: [
-        { courseCode: "02.143DH", weightage: 80 },
-        { courseCode: "02.231TS", weightage: 10 }, // user 3's module
-        { courseCode: "02.202", weightage: 10 },
-      ],
-      allModules: ["02.136DH", "50.001", "50.002", "50.004"],
-    },
-  ]; // user 3 gets first pick
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
-  expect(
-    swaps[0]
-      .sort((a: User, b: User) => parseInt(a.id, 10) - parseInt(b.id, 10))
-      .map((u) => u.id)
-  ).toEqual(["1", "3"]);
-});
-
-// User1, 2, 3 and 4, 1 and 2 mutual, 3 and 4 mutual => 1 and 2 trade, 3 and 4 trade
-test("executeAlgorithm: 4 users, 2 pairs of possible trades", () => {
+// User 1, 2, 3 and 4, 1 and 2 mutual, 3 and 4 mutual => 1 and 2 trade, 3 and 4 trade
+test("useBlossom: 4 users, 2 pairs of non-overlapped possible trades", () => {
   const testData: User[] = [
     {
       id: "1",
@@ -691,26 +520,321 @@ test("executeAlgorithm: 4 users, 2 pairs of possible trades", () => {
       allModules: ["02.126", "50.001", "50.002", "50.004"],
     },
   ]; // user 3 gets first pick
-  let current: ModuleUserMap = modules.reduce((accumulator: any[], m: any) => {
-    if (m.type === "HASS") accumulator[m.courseCode] = [];
-    return accumulator;
-  }, {});
-  testData.forEach((u) => {
-    current[u.curHASSModule].push(u);
-  });
-  const swaps: User[][] = [];
-  subfunctions.executeAlgorithm(testData, current, swaps);
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toEqual(
+    JSON.stringify([
+      ["1", "2"],
+      ["3", "4"],
+    ])
+  );
+});
+
+test("useBlossom: 4 users, maximum trades found regardless of sequence", () => {
+  const testData: User[] = [
+    {
+      id: "3",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 15 },
+        { courseCode: "02.127DH", weightage: 65 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "4",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 5 },
+        { courseCode: "02.150HT", weightage: 90 },
+        { courseCode: "02.144DH", weightage: 5 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "1",
+      curHASSModule: "02.154HT",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.150HT", weightage: 80 },
+        { courseCode: "02.144DH", weightage: 10 },
+        { courseCode: "02.127DH", weightage: 10 },
+      ],
+      allModules: ["02.154HT", "50.001", "50.002", "50.004"],
+    },
+
+    {
+      id: "2",
+      curHASSModule: "02.150HT",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 60 },
+        { courseCode: "02.127DH", weightage: 20 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.150HT", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps1: User[][] = subfunctions.useBlossom(testData);
+  expect(swaps1.length).toBe(2);
+
+  [testData[1], testData[2]] = [testData[2], testData[1]];
+
+  const swaps2: User[][] = subfunctions.useBlossom(testData);
+  expect(swaps2.length).toBe(2);
+
+  [testData[1], testData[3]] = [testData[3], testData[1]];
+
+  const swaps3: User[][] = subfunctions.useBlossom(testData);
+  expect(swaps3.length).toBe(2);
+});
+
+test("useBlossom: 4 users, multiple pairs with the same traded modules but different weightage", () => {
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 15 },
+        { courseCode: "02.127DH", weightage: 65 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+
+    {
+      id: "2",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.150HT", weightage: 20 },
+        { courseCode: "02.154HT", weightage: 10 },
+        { courseCode: "02.127DH", weightage: 70 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "3",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 5 },
+        { courseCode: "02.150HT", weightage: 10 },
+        { courseCode: "02.144DH", weightage: 85 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "4",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 60 },
+        { courseCode: "02.150HT", weightage: 20 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toBe(
+    JSON.stringify([
+      ["1", "4"],
+      ["2", "3"],
+    ])
+  );
+});
+
+test("useBlossom: 4 users, multiple pairs with the same traded modules and same weightage", () => {
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 15 },
+        { courseCode: "02.127DH", weightage: 65 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "2",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.150HT", weightage: 15 },
+        { courseCode: "02.154HT", weightage: 20 },
+        { courseCode: "02.127DH", weightage: 65 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "3",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 15 },
+        { courseCode: "02.150HT", weightage: 20 },
+        { courseCode: "02.144DH", weightage: 65 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "4",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 65 },
+        { courseCode: "02.150HT", weightage: 20 },
+        { courseCode: "02.218", weightage: 15 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  const stringedSwaps = swapsToString(swaps);
   expect(
-    swaps.reduce((accumulator: string[][], currentValue: User[]) => {
-      accumulator.push(
-        currentValue
-          .sort((a: User, b: User) => parseInt(a.id, 10) - parseInt(b.id, 10))
-          .map((u) => u.id)
-      );
-      return accumulator;
-    }, [])
-  ).toEqual([
-    ["1", "2"],
-    ["3", "4"],
-  ]);
+    stringedSwaps ==
+      JSON.stringify([
+        ["1", "3"],
+        ["2", "4"],
+      ]) ||
+      stringedSwaps ==
+        JSON.stringify([
+          ["1", "4"],
+          ["2", "3"],
+        ])
+  ).toBe(true);
+});
+
+test("useBlossom: 4 users, all users place 100 weightage in one module", () => {
+  // they all want user 3's module
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.202",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.150HT", weightage: 0 },
+        { courseCode: "02.144DH", weightage: 100 },
+        { courseCode: "02.126", weightage: 0 },
+      ],
+      allModules: ["02.202", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "2",
+      curHASSModule: "02.150HT",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 100 },
+        { courseCode: "02.154HT", weightage: 0 },
+        { courseCode: "02.218", weightage: 0 },
+      ],
+      allModules: ["02.150HT", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "3",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 0 },
+        { courseCode: "02.127DH", weightage: 100 },
+        { courseCode: "02.150HT", weightage: 0 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "4",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 0 },
+        { courseCode: "02.150HT", weightage: 0 },
+        { courseCode: "02.144DH", weightage: 100 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toBe(JSON.stringify([["3", "4"]]));
+});
+
+test("useBlossom: 6 users, trade combinations with highest total weightage selected even if lower total weightage has more pairs", () => {
+  // possible trades: (3,5) [145] or (2,3 & 4,5) [95]
+  const testData: User[] = [
+    {
+      id: "1",
+      curHASSModule: "02.202",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.143DH", weightage: 10 },
+        { courseCode: "02.144DH", weightage: 80 },
+        { courseCode: "02.126", weightage: 10 },
+      ],
+      allModules: ["02.202", "50.001", "50.002", "50.004"],
+    },
+
+    {
+      id: "2",
+      curHASSModule: "02.150HT",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 60 },
+        { courseCode: "02.126", weightage: 20 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.150HT", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "3",
+      curHASSModule: "02.144DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 65 },
+        { courseCode: "02.127DH", weightage: 15 },
+        { courseCode: "02.150HT", weightage: 20 },
+      ],
+      allModules: ["02.144DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "4",
+      curHASSModule: "02.127DH",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.154HT", weightage: 5 },
+        { courseCode: "02.150HT", weightage: 5 },
+        { courseCode: "02.144DH", weightage: 90 },
+      ],
+      allModules: ["02.127DH", "50.001", "50.002", "50.004"],
+    },
+    {
+      id: "5",
+      curHASSModule: "02.154HT",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.150HT", weightage: 10 },
+        { courseCode: "02.144DH", weightage: 80 },
+        { courseCode: "02.127DH", weightage: 10 },
+      ],
+      allModules: ["02.154HT", "50.001", "50.002", "50.004"],
+    },
+
+    {
+      id: "6",
+      curHASSModule: "02.228TS",
+      email: "",
+      autoTradeModules: [
+        { courseCode: "02.144DH", weightage: 60 },
+        { courseCode: "02.154HT", weightage: 20 },
+        { courseCode: "02.218", weightage: 20 },
+      ],
+      allModules: ["02.228TS", "50.001", "50.002", "50.004"],
+    },
+  ];
+  const swaps: User[][] = subfunctions.useBlossom(testData);
+  expect(swapsToString(swaps)).toBe(JSON.stringify([["3", "5"]]));
 });
