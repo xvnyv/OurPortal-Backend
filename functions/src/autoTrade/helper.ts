@@ -85,9 +85,17 @@ const sendEmail = (
 
     var transporter = getTransporter();
 
-    console.log(flattenedSwaps);
+    // console.log(flattenedSwaps);
+
+    let count = 0;
 
     for (let u of users) {
+      // === remove when done testing
+      if (count === 4) {
+        break;
+      }
+      count++;
+      // ===
       let message;
       if (flattenedSwaps.hasOwnProperty(u.id)) {
         message = `Congratulations! The HASS module that you were previously enrolled in, ${
@@ -99,8 +107,8 @@ const sendEmail = (
         message = `It appears that our automatic trading system was unable to find any suitable trades for your current HASS module ${u.curHASSModule}. Better luck next time!`;
       }
 
-      console.log(u.email);
-      console.log(message);
+      // console.log(u.email);
+      // console.log(message);
       let mailOptions = {
         from: "sutd-ourportal@outlook.com",
         to: u.email,
@@ -116,13 +124,14 @@ const sendEmail = (
           res.sendStatus(200);
         }
       });
-      await new Promise((r) => setTimeout(r, 1000));
+      await new Promise((r) => setTimeout(r, 5000));
     }
   });
 };
 
 const useBlossom = (users: User[]) => {
   const graph = [];
+  let count = 0;
 
   for (let i = 0; i < users.length; i++) {
     let u = users[i];
@@ -138,9 +147,12 @@ const useBlossom = (users: User[]) => {
       if (uWantsu2 && u2WantsU) {
         const totalWeightage = uWantsu2.weightage + u2WantsU.weightage;
         graph.push([i, j, totalWeightage == 0 ? 0.1 : totalWeightage]);
+        count++;
       }
     }
   }
+
+  console.log("Total trades: " + count);
 
   // console.log("GRAPH STARTS");
   // graph.forEach((e) => {
@@ -173,6 +185,7 @@ const useBlossom = (users: User[]) => {
     }
   }
 
+  console.log("Successful trades: " + trades.length);
   return trades;
 };
 

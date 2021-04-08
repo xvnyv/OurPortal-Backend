@@ -1,0 +1,252 @@
+[
+  [
+    {
+      "curHASSModule": "02.219TS",
+      "autoTradeModules": [
+        {
+          "weightage": 28,
+          "courseCode": "02.136DH"
+        },
+        {
+          "weightage": 72,
+          "courseCode": "02.154HT"
+        }
+      ],
+      "id": "41",
+      "allModules": ["02.219TS"],
+      "email": "hazel2934+41@gmail.com"
+    },
+    {
+      "curHASSModule": "02.154HT",
+      "autoTradeModules": [
+        {
+          "weightage": 11,
+          "courseCode": "02.126"
+        },
+        {
+          "weightage": 89,
+          "courseCode": "02.219TS"
+        }
+      ],
+      "id": "39",
+      "allModules": ["02.154HT"],
+      "email": "xvvnyv+39@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.155TS",
+      "autoTradeModules": [
+        {
+          "weightage": 95,
+          "courseCode": "02.218"
+        },
+        {
+          "weightage": 0,
+          "courseCode": "02.231TS"
+        },
+        {
+          "weightage": 5,
+          "courseCode": "02.228TS"
+        }
+      ],
+      "id": "20",
+      "allModules": ["02.155TS"],
+      "email": "bunsis29+20@gmail.com"
+    },
+    {
+      "curHASSModule": "02.231TS",
+      "autoTradeModules": [
+        {
+          "weightage": 24,
+          "courseCode": "02.155TS"
+        },
+        {
+          "weightage": 76,
+          "courseCode": "02.120DH"
+        }
+      ],
+      "id": "25",
+      "allModules": ["02.231TS"],
+      "email": "bunsis29+25@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.143DH",
+      "autoTradeModules": [
+        {
+          "weightage": 100,
+          "courseCode": "02.120DH"
+        }
+      ],
+      "id": "5",
+      "allModules": ["02.143DH"],
+      "email": "bunsis29+5@gmail.com"
+    },
+    {
+      "curHASSModule": "02.120DH",
+      "autoTradeModules": [
+        {
+          "weightage": 90,
+          "courseCode": "02.143DH"
+        },
+        {
+          "weightage": 10,
+          "courseCode": "02.228TS"
+        }
+      ],
+      "id": "31",
+      "allModules": ["02.120DH"],
+      "email": "hazel2934+31@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.202",
+      "autoTradeModules": [
+        {
+          "weightage": 16,
+          "courseCode": "02.154HT"
+        },
+        {
+          "weightage": 56,
+          "courseCode": "02.143DH"
+        },
+        {
+          "weightage": 28,
+          "courseCode": "02.219TS"
+        }
+      ],
+      "id": "43",
+      "allModules": ["02.202"],
+      "email": "bunsis29+43@gmail.com"
+    },
+    {
+      "curHASSModule": "02.219TS",
+      "autoTradeModules": [
+        {
+          "weightage": 27,
+          "courseCode": "02.120DH"
+        },
+        {
+          "weightage": 41,
+          "courseCode": "02.202"
+        },
+        {
+          "weightage": 32,
+          "courseCode": "02.228TS"
+        }
+      ],
+      "id": "34",
+      "allModules": ["02.219TS"],
+      "email": "xvvnyv+34@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.136DH",
+      "autoTradeModules": [
+        {
+          "weightage": 100,
+          "courseCode": "02.131DH"
+        }
+      ],
+      "id": "1",
+      "allModules": ["02.136DH"],
+      "email": "xvvnyv+1@gmail.com"
+    },
+    {
+      "curHASSModule": "02.131DH",
+      "autoTradeModules": [
+        {
+          "weightage": 61,
+          "courseCode": "02.136DH"
+        },
+        {
+          "weightage": 7,
+          "courseCode": "02.144DH"
+        },
+        {
+          "weightage": 32,
+          "courseCode": "02.154HT"
+        }
+      ],
+      "id": "27",
+      "allModules": ["02.131DH"],
+      "email": "hazel2934+27@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.202",
+      "autoTradeModules": [
+        {
+          "weightage": 100,
+          "courseCode": "02.126"
+        }
+      ],
+      "id": "3",
+      "allModules": ["02.202"],
+      "email": "xvvnyv+3@gmail.com"
+    },
+    {
+      "curHASSModule": "02.126",
+      "autoTradeModules": [
+        {
+          "weightage": 96,
+          "courseCode": "02.202"
+        },
+        {
+          "weightage": 4,
+          "courseCode": "02.150HT"
+        }
+      ],
+      "id": "46",
+      "allModules": ["02.126"],
+      "email": "hazel2934+46@gmail.com"
+    }
+  ],
+  [
+    {
+      "curHASSModule": "02.154HT",
+      "autoTradeModules": [
+        {
+          "weightage": 36,
+          "courseCode": "02.131DH"
+        },
+        {
+          "weightage": 15,
+          "courseCode": "02.143DH"
+        },
+        {
+          "weightage": 49,
+          "courseCode": "02.105DH"
+        }
+      ],
+      "id": "4",
+      "allModules": ["02.154HT"],
+      "email": "xvvnyv+4@gmail.com"
+    },
+    {
+      "curHASSModule": "02.131DH",
+      "autoTradeModules": [
+        {
+          "weightage": 78,
+          "courseCode": "02.211"
+        },
+        {
+          "weightage": 17,
+          "courseCode": "02.154HT"
+        },
+        {
+          "weightage": 5,
+          "courseCode": "02.105DH"
+        }
+      ],
+      "id": "11",
+      "allModules": ["02.131DH"],
+      "email": "hazel2934+11@gmail.com"
+    }
+  ]
+]
