@@ -1,0 +1,173 @@
+==================
+Test: 100 requests
+==================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 100
+>  
+>  Possible trades: 87
+>  Successful trades: 33
+>  
+>  Fulfilled requests: 66
+>  Time taken: 0.013s
+i  functions: Finished "stressTester" in ~1s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 100
+>  
+>  Possible trades: 63
+>  Successful trades: 28
+>  
+>  Fulfilled requests: 56
+>  Time taken: 0.011s
+i  functions: Finished "stressTester" in ~1s
+
+
+
+==================
+Test: 200 requests
+==================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 200
+>  
+>  Possible trades: 257
+>  Successful trades: 74
+>  
+>  Fulfilled requests: 148
+>  Time taken: 0.057s
+i  functions: Finished "stressTester" in ~1s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 200
+>  
+>  Possible trades: 274
+>  Successful trades: 72
+>  
+>  Fulfilled requests: 144
+>  Time taken: 0.053s
+i  functions: Finished "stressTester" in ~1s
+
+
+==================
+Test: 500 requests
+==================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 500
+>  
+>  Possible trades: 1573
+>  Successful trades: 224
+>  
+>  Fulfilled requests: 448
+>  Time taken: 0.13s
+i  functions: Finished "stressTester" in ~1s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 500
+>  
+>  Possible trades: 1673
+>  Successful trades: 220
+>  
+>  Fulfilled requests: 440
+>  Time taken: 0.172s
+i  functions: Finished "stressTester" in ~1s
+
+
+===================
+Test: 1000 requests
+===================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 1000
+>  
+>  Possible trades: 6429
+>  Successful trades: 488
+>  
+>  Fulfilled requests: 976
+>  Time taken: 0.357s
+i  functions: Finished "stressTester" in ~1s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 1000
+>  
+>  Possible trades: 6699
+>  Successful trades: 488
+>  
+>  Fulfilled requests: 976
+>  Time taken: 0.348s
+i  functions: Finished "stressTester" in ~1s
+
+
+===================
+Test: 5000 requests
+===================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 5000
+>  
+>  Possible trades: 165245
+>  Successful trades: 2499
+>  
+>  Fulfilled requests: 4998
+>  Time taken: 27.622s
+i  functions: Finished "stressTester" in ~3s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 5000
+>  
+>  Possible trades: 161052
+>  Successful trades: 2500
+>  
+>  Fulfilled requests: 5000
+>  Time taken: 25.471s
+i  functions: Finished "stressTester" in ~2s
+
+
+====================
+Test: 10000 requests
+====================
+
+Test 1
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 10000
+>  
+>  Possible trades: 656068
+>  Successful trades: 5000
+>  
+>  Fulfilled requests: 10000
+>  Time taken: 179.531s
+i  functions: Finished "stressTester" in ~6s
+
+Test 2
+++++++
+i  functions: Beginning execution of "stressTester"
+>  Total requests: 10000
+>  
+>  Possible trades: 649517
+>  Successful trades: 5000
+>  
+>  Fulfilled requests: 10000
+>  Time taken: 219.325s
+i  functions: Finished "stressTester" in ~8s

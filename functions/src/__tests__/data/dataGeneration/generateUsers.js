@@ -14,13 +14,14 @@ var getRandomHassModule = function () {
   return hassModules[randomInt(0, hassN)].courseCode;
 };
 var generateUsers = function () {
-  var n = 50;
+  var n = 100;
   var firstName = "Test User";
   var emails = ["xvvnyv", "hazel2934", "bunsis29"];
   var users = [];
+  console.log("Total requests: " + n);
   for (var i = 0; i < n; i++) {
     var lastName = "" + (i + 1);
-    var email = emails[randomInt(0, 3)] + "+" + (i + 1) + "@gmail.com";
+    var email = emails[randomInt(0, 3)] + "@gmail.com";
     var selectedModules = [];
     var modules_2 = [getRandomHassModule()];
     selectedModules.push(modules_2[0]);
@@ -54,6 +55,6 @@ var generateUsers = function () {
     users.push(user);
   }
   var data = JSON.stringify(users);
-  fs.writeFileSync("./randomUsers.json", data);
+  fs.writeFileSync("src/__tests__/data/dataGeneration/randomUsers.json", data);
 };
 generateUsers();

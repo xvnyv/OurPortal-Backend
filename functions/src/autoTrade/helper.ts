@@ -1,10 +1,10 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
+const axios = require("axios");
+
 var blossom = require("edmonds-blossom");
-var cors = require("cors")({ origin: true });
 
 import { User } from "./interfaces";
-import { getTransporter } from "../helper";
 
 /* Query User collection on Firestore and retrieves only users who:
   1. have already enrolled in a HASS module  
@@ -47,9 +47,14 @@ const updateFirestore = async (
   swaps: User[][],
   db: FirebaseFirestore.CollectionReference
 ) => {
-  const batch = admin.firestore().batch();
-
-  for (let swap of swaps) {
+  let batch = admin.firestore().batch();
+  let committed = false;
+  for (let i = 0; i < swaps.length; i++) {
+    if (i !== 0 && i % 250 === 0) {
+      batch = admin.firestore().batch();
+      committed = false;
+    }
+    const swap = swaps[i];
     const docRef1 = db.doc(swap[0].id);
     const docRef2 = db.doc(swap[1].id);
     batch.update(docRef1, {
@@ -62,71 +67,49 @@ const updateFirestore = async (
         m === swap[1].curHASSModule ? swap[0].curHASSModule : m
       ),
     });
+    if (i % 250 === 249) {
+      await batch.commit();
+      committed = true;
+    }
   }
-
-  await batch.commit();
+  if (!committed) await batch.commit();
 };
 
-const sendEmail = (
+const sendEmail = async (
   req: functions.Request,
   res: functions.Response,
   swaps: User[][],
   users: User[]
 ) => {
-  cors(req, res, async () => {
-    const flattenedSwaps: any = swaps.reduce(
-      (accumulator: any, currentValue: User[]) => {
-        accumulator[currentValue[0].id] = currentValue[1].curHASSModule;
-        accumulator[currentValue[1].id] = currentValue[0].curHASSModule;
-        return accumulator;
-      },
-      {}
-    );
+  const flattenedSwaps: any = swaps.reduce(
+    (accumulator: any, currentValue: User[]) => {
+      accumulator[currentValue[0].id] = currentValue[1].curHASSModule;
+      accumulator[currentValue[1].id] = currentValue[0].curHASSModule;
+      return accumulator;
+    },
+    {}
+  );
 
-    var transporter = getTransporter();
-
-    // console.log(flattenedSwaps);
-
-    let count = 0;
-
-    for (let u of users) {
-      // === remove when done testing
-      if (count === 4) {
-        break;
-      }
-      count++;
-      // ===
-      let message;
-      if (flattenedSwaps.hasOwnProperty(u.id)) {
-        message = `Congratulations! The HASS module that you were previously enrolled in, ${
-          u.curHASSModule
-        }, has now been swapped for the module ${
-          flattenedSwaps[u.id]
-        }. You can log on to OurPortal via the link https://our-portal-c30lx5sjw-shohamc1.vercel.app to view all modules that you have enrolled in.`;
-      } else {
-        message = `It appears that our automatic trading system was unable to find any suitable trades for your current HASS module ${u.curHASSModule}. Better luck next time!`;
-      }
-
-      // console.log(u.email);
-      // console.log(message);
-      let mailOptions = {
-        from: "sutd-ourportal@outlook.com",
-        to: u.email,
-        subject: "Automated HASS Trading Results",
-        text: `Hello there,\n\n${message}\n\nFrom your friends at OurPortal`,
-      };
-
-      transporter.sendMail(mailOptions, (err: any, data: any) => {
-        if (err) {
-          functions.logger.error(err);
-        } else {
-          functions.logger.info(`Sent AutoTrade results to ${u.id}`);
-          res.sendStatus(200);
-        }
-      });
-      await new Promise((r) => setTimeout(r, 5000));
+  const sortedUsers: any = [];
+  for (let u of users) {
+    let message;
+    if (flattenedSwaps.hasOwnProperty(u.id)) {
+      message = `Congratulations! The HASS module that you were previously enrolled in, ${
+        u.curHASSModule
+      }, has now been swapped for the module ${
+        flattenedSwaps[u.id]
+      }. You can log on to OurPortal via the link https://our-portal-c30lx5sjw-shohamc1.vercel.app to view all modules that you have enrolled in.`;
+      sortedUsers.push({ email: u.email, message, id: u.id });
+    } else {
+      message = `It appears that our automatic trading system was unable to find any suitable trades for your current HASS module ${u.curHASSModule}. Better luck next time!`;
+      sortedUsers.push({ email: u.email, message, id: u.id });
     }
-  });
+  }
+
+  await axios.post(
+    "http://localhost:5001/ourportal-e0a9c/us-central1/sendTradeResults",
+    { data: JSON.stringify(sortedUsers) }
+  );
 };
 
 const useBlossom = (users: User[]) => {
@@ -152,7 +135,7 @@ const useBlossom = (users: User[]) => {
     }
   }
 
-  console.log("Total trades: " + count);
+  console.log("Possible trades: " + count);
 
   // console.log("GRAPH STARTS");
   // graph.forEach((e) => {
@@ -186,6 +169,7 @@ const useBlossom = (users: User[]) => {
   }
 
   console.log("Successful trades: " + trades.length);
+  console.log("\nFulfilled requests: " + trades.length * 2);
   return trades;
 };
 
