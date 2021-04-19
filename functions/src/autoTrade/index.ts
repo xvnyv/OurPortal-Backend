@@ -14,9 +14,10 @@ if (!admin.apps.length) {
 }
 let db = admin.firestore();
 
-export const autoTrade = functions.https.onRequest(
-  async (req: functions.Request, res: functions.Response) => {
-    const userDb = db.collection("usersTest");
+export const autoTrade = functions
+  .runWith({ memory: "256MB", timeoutSeconds: 540 })
+  .https.onRequest(async (req: functions.Request, res: functions.Response) => {
+    const userDb = db.collection("users");
     const users: User[] = await retrieveTrades(userDb);
     // shuffle to introduce randomness for when there is more than one possible pair with equal weightage
     shuffleUsers(users);
@@ -25,11 +26,10 @@ export const autoTrade = functions.https.onRequest(
     const start = Date.now();
     const swaps: User[][] = useBlossom(users);
     const end = Date.now();
-    const timeTaken = (end-start) / 1000;
+    const timeTaken = (end - start) / 1000;
     console.log("Time taken: " + timeTaken + "s");
     await updateFirestore(swaps, userDb);
     await sendEmail(req, res, swaps, users);
 
     res.json("done");
-  }
-);
+  });

@@ -83,8 +83,8 @@ export const autoTradeStress = functions
     const end = Date.now();
     const timeTaken = (end - start) / 1000;
     console.log("Time taken: " + timeTaken + "s");
-    // await updateFirestore(swaps, userDb);
-    // await sendEmail(req, res, swaps, users);
+    await updateFirestore(swaps, userDb);
+    await sendEmail(req, res, swaps, users);
     writeToFile(JSON.stringify(swaps));
 
     res.json("done");

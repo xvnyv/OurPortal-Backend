@@ -14,7 +14,7 @@ var getRandomHassModule = function () {
   return hassModules[randomInt(0, hassN)].courseCode;
 };
 var generateUsers = function () {
-  var n = 100;
+  var n = 1000;
   var firstName = "Test User";
   var emails = ["xvvnyv", "hazel2934", "bunsis29"];
   var users = [];

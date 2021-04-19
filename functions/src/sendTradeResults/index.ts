@@ -1,7 +1,4 @@
 import * as functions from "firebase-functions";
-var cors = require("cors")({ origin: true });
-const { promisify } = require("util");
-const axios = require("axios");
 const mailgun = require("mailgun-js");
 const mg = mailgun({
   apiKey: functions.config().mailgun.apikey,
@@ -9,19 +6,18 @@ const mg = mailgun({
 });
 
 export const sendTradeResults = functions
-  .runWith({ memory: "256MB", timeoutSeconds: 120 })
+  .runWith({ memory: "256MB", timeoutSeconds: 540 })
   .https.onRequest(async (req: functions.Request, res: functions.Response) => {
-    const promisifiedCors = promisify(cors);
-    await promisifiedCors(req, res);
+    // const promisifiedCors = promisify(cors);
+    // await promisifiedCors(req, res);
 
     let { data } = req.body;
     data = JSON.parse(data);
     let dataCopy = [...data];
     console.log("Called with length: " + data.length);
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < data.length; i++) {
       const u = data[i];
-      if (u === undefined) break;
       let mailOptions = {
         from: "sutd-ourportal@outlook.com",
         to: u.email,
@@ -30,7 +26,7 @@ export const sendTradeResults = functions
       };
 
       try {
-        await mg.messages().send(mailOptions);
+        mg.messages().send(mailOptions);
 
         dataCopy = dataCopy.filter((um: any) => um.id !== u.id);
         console.log(`Sent AutoTrade results to ${u.id} with email ${u.email}`);
@@ -39,27 +35,13 @@ export const sendTradeResults = functions
         );
         // res.sendStatus(200);
       } catch (e) {
-        try {
-          await mg.messages().send(mailOptions);
-          dataCopy = dataCopy.filter((um: any) => um.id !== u.id);
-          console.log(
-            `Sent AutoTrade results to ${u.id} with email ${u.email}`
-          );
-          functions.logger.info(
-            `Sent AutoTrade results to ${u.id} with email ${u.email}`
-          );
-        } catch (e) {
-          console.log(`Error sending email to ${u.id} with email ${u.email}`);
-        }
+        console.log(`Error sending email to ${u.id} with email ${u.email}`);
       }
 
-      await new Promise((r) => setTimeout(r, 250));
+      if (i % 100 === 99) {
+        await new Promise((r) => setTimeout(r, 2000));
+      }
     }
-    if (dataCopy.length) {
-      await axios.post(
-        "http://localhost:5001/ourportal-e0a9c/us-central1/sendTradeResults",
-        { data: JSON.stringify(dataCopy) }
-      );
-    }
+
     res.json("done");
   });
