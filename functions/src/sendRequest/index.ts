@@ -51,6 +51,9 @@ export const sendRequest = functions.https.onRequest(
       // get receiver UID
       try {
         const rec = await usersDB.where("email", "==", receiverEID).get();
+        if (!rec.docs.length) {
+          return res.status(400).send("No email found in database").end();
+        }
         receiverID = rec.docs[0].data().uid;
 
         // get current modules
