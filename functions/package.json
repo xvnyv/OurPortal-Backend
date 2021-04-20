@@ -3,7 +3,7 @@
   "scripts": {
     "compile": "tsc -w",
     "build": "tsc",
-    "serve": "npm run compile | firebase emulators:start",
+    "serve": "npm run compile | firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",

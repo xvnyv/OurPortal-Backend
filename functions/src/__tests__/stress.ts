@@ -19,10 +19,10 @@ if (!admin.apps.length) {
 }
 let db = admin.firestore();
 // === remove for deployment
-db.settings({
-  host: "localhost:8080",
-  ssl: false,
-});
+// db.settings({
+//   host: "localhost:8080",
+//   ssl: false,
+// });
 // ===
 
 const setUpDb = async () => {

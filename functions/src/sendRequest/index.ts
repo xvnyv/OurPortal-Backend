@@ -19,6 +19,7 @@ import { getTransporter } from "../helper";
   "receiverEID": "shhmchk@gmail.com"
 }
 */
+
 export const sendRequest = functions.https.onRequest(
   async (req: functions.Request, res: functions.Response) => {
     cors(req, res, async () => {
@@ -48,49 +49,57 @@ export const sendRequest = functions.https.onRequest(
       }
 
       // get receiver UID
-      const rec = await usersDB.where("email", "==", receiverEID).get();
-      receiverID = rec.docs[0].data().uid;
+      try {
+        const rec = await usersDB.where("email", "==", receiverEID).get();
+        receiverID = rec.docs[0].data().uid;
 
-      // get current modules
-      const recMod = await getHASSMod(usersDB, receiverID);
-      const sendMod = await getHASSMod(usersDB, senderID);
+        // get current modules
+        const recMod = await getHASSMod(usersDB, receiverID);
+        const sendMod = await getHASSMod(usersDB, senderID);
 
-      while (exists) {
-        // generate the trade ID (FORMAT: word-word-word-word)
-        phrase = niceware.generatePassphrase(8).join("-");
-
-        // check if trade exists in collection
-        if (!(await doesTradeExist(tradeDB, phrase))) {
-          // add trade to firestore
-          tradeDB.doc(phrase).set({
-            from: senderID,
-            fromMod: sendMod,
-            to: receiverID,
-            toMod: recMod,
-          });
-
-          // change value of exists, break from loop
-          exists = false;
+        if (!recMod || !sendMod) {
+          return res.status(400).send("Recipient has no HASS module").end();
         }
+
+        while (exists) {
+          // generate the trade ID (FORMAT: word-word-word-word)
+          phrase = niceware.generatePassphrase(8).join("-");
+          // check if trade exists in collection
+          if (!(await doesTradeExist(tradeDB, phrase))) {
+            // add trade to firestore
+            console.log("in loop: " + phrase);
+            tradeDB.doc(phrase).set({
+              from: senderID,
+              fromMod: sendMod,
+              to: receiverID,
+              toMod: recMod,
+            });
+
+            // change value of exists, break from loop
+            exists = false;
+          }
+        }
+
+        let mailOptions = {
+          from: "sutd-ourportal@outlook.com",
+          to: receiverEID,
+          subject: "You've recieved a trade request!",
+          text: `Hello there,\nYou've recieved a trade request from someone! Click the link below to check the deets and accept/decline the request.\n\n${
+            "https://ourportal.shohamc1.com/trade/" + phrase
+          }\n\nFrom your friends at OurPortal`,
+        };
+
+        transporter.sendMail(mailOptions, (err: any, data: any) => {
+          if (err) {
+            functions.logger.error(err);
+          } else {
+            functions.logger.info(`Initialised trade ${phrase}`);
+            res.sendStatus(200);
+          }
+        });
+      } catch (err) {
+        console.log(err);
       }
-
-      let mailOptions = {
-        from: "sutd-ourportal@outlook.com",
-        to: receiverEID,
-        subject: "You've recieved a trade request!",
-        text: `Hello there,\nYou've recieved a trade request from someone! Click the link below to check the deets and accept/decline the request.\n\n${
-          "https://ourportal.shohamc1.com/trade/" + phrase
-        }\n\nFrom your friends at OurPortal`,
-      };
-
-      transporter.sendMail(mailOptions, (err: any, data: any) => {
-        if (err) {
-          functions.logger.error(err);
-        } else {
-          functions.logger.info(`Initialised trade ${phrase}`);
-          res.sendStatus(200);
-        }
-      });
     });
   }
 );
