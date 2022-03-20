@@ -26,4 +26,6 @@ Testing was carried out using the following tools:
 - End-to-End tests: Cypress
 - Load tests: k6
 
+Backend was deployed using Google Cloud Functions.
+
 Video recordings of the application that were used for our demo can be found here: https://drive.google.com/drive/folders/1OqVNjJVsC7jQbphgXPNBIVzMNoDC2R6E
